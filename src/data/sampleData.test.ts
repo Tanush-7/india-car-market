@@ -1,15 +1,25 @@
 import { describe, expect, it } from 'vitest';
 import { enrichModels } from '../lib/enrich';
-import { loadDataset } from './provider';
+import { loadDataset, sampleDataset } from './provider';
 
 // The sample dataset must stay internally consistent: every variant must point
 // at a real model, every active model must have at least one available variant,
 // and prices must be positive.
 describe('sample dataset integrity', () => {
   it('loads through the provider as sample data', async () => {
-    const ds = await loadDataset();
+    const ds = sampleDataset();
     expect(ds.meta.isSampleData).toBe(true);
     expect(ds.models.length).toBeGreaterThan(0);
+  });
+
+  it('merges verified records over the sample base', async () => {
+    const ds = await loadDataset();
+    expect(ds.meta.isSampleData).toBe(false);
+    expect(ds.meta.verifiedModelCount).toBe(75);
+    expect(ds.models.length).toBeGreaterThan(75);
+    // No duplicate model ids after the merge.
+    expect(new Set(ds.models.map((m) => m.id)).size).toBe(ds.models.length);
+    expect(new Set(ds.variants.map((v) => v.id)).size).toBe(ds.variants.length);
   });
 
   it('has no orphan variants and positive prices', async () => {
@@ -33,13 +43,13 @@ describe('sample dataset integrity', () => {
   });
 
   it('marks every sample record as an estimate', async () => {
-    const ds = await loadDataset();
+    const ds = sampleDataset();
     for (const m of ds.models) expect(m.isEstimate).toBe(true);
     for (const v of ds.variants) expect(v.isEstimate).toBe(true);
   });
 
   it('keeps launch events inside the Oct 2023 - Oct 2026 window', async () => {
-    const ds = await loadDataset();
+    const ds = sampleDataset();
     for (const l of ds.launches) {
       expect(l.launchDate >= '2023-10-01').toBe(true);
       expect(l.launchDate <= '2026-10-31').toBe(true);

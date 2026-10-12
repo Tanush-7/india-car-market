@@ -243,7 +243,7 @@ const modelSpecs: ModelSpec[] = [
   },
   {
     id: 'xuv700', makerId: 'mahindra', name: 'XUV700', bodyType: 'SUV',
-    firstLaunchDate: '2021-08-14', status: 'active',
+    firstLaunchDate: '2021-08-14', status: 'discontinued',
     variants: [
       ['MX 2.0P', 'Petrol', 'Manual', 13.99],
       ['AX3 2.2D', 'Diesel', 'Manual', 17.49],

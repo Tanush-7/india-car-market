@@ -51,6 +51,8 @@ export interface CarModel {
   lastVerifiedAt: string; // ISO date
   /** True when the price is an estimate rather than a published figure. */
   isEstimate: boolean;
+  /** Data-quality notes: flags, caveats, omitted sub-variants. */
+  notes?: string;
 }
 
 export interface Variant {

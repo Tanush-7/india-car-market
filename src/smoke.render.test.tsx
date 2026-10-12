@@ -21,9 +21,10 @@ const { Launches } = await import('./pages/Launches');
 const { DataPage } = await import('./pages/DataPage');
 
 describe('page renders', () => {
-  it('renders all seven pages against the sample dataset', async () => {
+  it('renders all seven pages against the merged dataset', async () => {
     const ds = await provider.loadDataset();
-    expect(ds.meta.isSampleData).toBe(true);
+    expect(ds.meta.isSampleData).toBe(false);
+    expect(ds.meta.verifiedModelCount).toBe(75);
 
     const pages: [string, string][] = [
       ['dashboard', renderToString(<Dashboard ds={ds} />)],
@@ -40,7 +41,8 @@ describe('page renders', () => {
 
     const dash = pages[0][1];
     expect(dash).toContain('Active models');
-    expect(dash).toContain('27'); // 27 active sample models
+    const activeCount = String(ds.models.filter((m) => m.status === 'active').length);
+    expect(dash).toContain(activeCount);
     expect(pages[1][1]).toContain('Model Explorer');
     expect(pages[5][1]).toContain('Launch History');
   });

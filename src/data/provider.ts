@@ -21,6 +21,13 @@ import {
   priceHistory as samplePriceHistory,
   variants as sampleVariants,
 } from './sampleData';
+import {
+  VERIFIED_AT,
+  VERIFIED_NOTE,
+  verifiedMakers,
+  verifiedModels,
+  verifiedVariants,
+} from './verifiedData';
 
 export interface MarketDataset {
   makers: Maker[];
@@ -30,12 +37,15 @@ export interface MarketDataset {
   launches: LaunchEvent[];
   meta: {
     isSampleData: boolean;
+    /** Present when verified records are merged in. */
+    verifiedModelCount?: number;
+    totalModelCount?: number;
     note: string;
     lastUpdated: string;
   };
 }
 
-function sampleDataset(): MarketDataset {
+export function sampleDataset(): MarketDataset {
   return {
     makers: sampleMakers,
     models: sampleModels,
@@ -46,6 +56,46 @@ function sampleDataset(): MarketDataset {
       isSampleData: true,
       note: SAMPLE_NOTE,
       lastUpdated: SAMPLE_VERIFIED_AT,
+    },
+  };
+}
+
+/**
+ * Phase 3 merge: verified records replace sample models with the same id;
+ * sample models outside the researched scope are retained as labeled sample
+ * data. Sample price-history entries for replaced models are dropped so they
+ * cannot attach to regenerated variant ids.
+ */
+function mergedDataset(): MarketDataset {
+  const replacedIds = new Set(verifiedModels.map((m) => m.id));
+  const verifiedMakerIds = new Set(verifiedMakers.map((m) => m.id));
+  const models = [
+    ...verifiedModels,
+    ...sampleModels.filter((m) => !replacedIds.has(m.id)),
+  ];
+  const variants = [
+    ...verifiedVariants,
+    ...sampleVariants.filter((v) => !replacedIds.has(v.modelId)),
+  ];
+  const priceHistory = samplePriceHistory.filter((h) => {
+    const v = sampleVariants.find((sv) => sv.id === h.variantId);
+    return v !== undefined && !replacedIds.has(v.modelId);
+  });
+  return {
+    makers: [
+      ...verifiedMakers,
+      ...sampleMakers.filter((m) => !verifiedMakerIds.has(m.id)),
+    ],
+    models,
+    variants,
+    priceHistory,
+    launches: sampleLaunches,
+    meta: {
+      isSampleData: false,
+      verifiedModelCount: verifiedModels.length,
+      totalModelCount: models.length,
+      note: VERIFIED_NOTE,
+      lastUpdated: VERIFIED_AT,
     },
   };
 }
@@ -100,8 +150,8 @@ export async function loadDataset(): Promise<MarketDataset> {
     try {
       return await supabaseDataset(base, apiKey);
     } catch (err) {
-      console.warn('Supabase load failed, falling back to sample data.', err);
+      console.warn('Supabase load failed, falling back to bundled data.', err);
     }
   }
-  return sampleDataset();
+  return mergedDataset();
 }

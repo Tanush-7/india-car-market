@@ -38,7 +38,15 @@ export default function App() {
   };
 
   return (
-    <Shell page={page} onNav={nav} isSampleData={ds?.meta.isSampleData ?? true}>
+    <Shell
+      page={page}
+      onNav={nav}
+      dataStatus={{
+        isSampleData: ds?.meta.isSampleData ?? true,
+        verifiedModelCount: ds?.meta.verifiedModelCount ?? 0,
+        totalModelCount: ds?.meta.totalModelCount ?? 0,
+      }}
+    >
       {error && (
         <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
           Failed to load data: {error}

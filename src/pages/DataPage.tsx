@@ -25,15 +25,30 @@ export function DataPage(props: { ds: MarketDataset }) {
         sub="How the data is stored, how to update it, and how to connect the live Supabase backend."
       />
 
-      <Card title="Current dataset" className="mb-4">
+      <Card title="Verification progress" className="mb-4">
         <div className="flex flex-wrap items-center gap-2">
           {props.ds.meta.isSampleData ? (
             <Badge tone="amber">Sample data - not verified</Badge>
+          ) : props.ds.meta.verifiedModelCount !== undefined ? (
+            <Badge tone="green">
+              {props.ds.meta.verifiedModelCount} of {props.ds.meta.totalModelCount} models verified
+            </Badge>
           ) : (
             <Badge tone="green">Live Supabase data</Badge>
           )}
           <span className="text-sm text-slate-600">{props.ds.meta.note}</span>
         </div>
+        {!props.ds.meta.isSampleData && (
+          <div className="mt-3 rounded-lg bg-amber-50 p-3 text-xs text-amber-900">
+            <span className="font-medium">Methodology caveat. </span>
+            Only 15 of 1,109 researched prices come from official manufacturer price lists;
+            the rest are portal-sourced estimates, badged as such on every model. Many portal
+            tables predate the 22 Sep 2026 GST rate cut and several makers revised prices in
+            late Sep / early Oct 2026, so figures may be marginally stale. A re-verification
+            pass against official price lists is planned. See data-collection/VALIDATION.md
+            in the repo for the full per-model flags.
+          </div>
+        )}
         <div className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
           {[
             ['Makers', counts.makers],

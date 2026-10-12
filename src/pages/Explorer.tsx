@@ -101,6 +101,13 @@ function ModelModal(props: { row: ModelRow; ds: MarketDataset; onClose: () => vo
           </div>
         </div>
 
+        {row.model.notes && (
+          <div className="mt-4 rounded-lg bg-amber-50 p-3 text-xs text-amber-900">
+            <div className="font-medium text-amber-800">Data quality notes</div>
+            <div className="mt-1">{row.model.notes}</div>
+          </div>
+        )}
+
         {history.length > 0 && (
           <div className="mt-4">
             <h3 className="text-sm font-semibold text-slate-900">Recorded price changes</h3>
