@@ -15,7 +15,7 @@
       "flags": [
         "Portal prices in whole lakhs only; integer INR derived by x100000.",
         "CarWale (crawled Oct 2026) lists 38 variants, range Rs 10.91-20.46L, consistent with V3Cars table.",
-        "Prices may predate the 22 Sep 2026 GST rate cut; re-verify against Hyundai India price list or dealer."
+        "Prices may predate the 22 Sep 2025 GST rate cut; re-verify against Hyundai India price list or dealer."
       ],
       "variants": [
         {"name": "E 1.5 Petrol MT", "fuel": "Petrol", "transmission": "Manual", "ex_showroom_price_inr": 1090000, "is_estimate": true, "source_url": "https://www.v3cars.com/hyundai-cars/creta"},
@@ -70,7 +70,7 @@
       "flags": [
         "N10 Dual Tone MT price derived as N10 MT + Rs 14,500 dual-tone premium (CarDekho); not directly quoted.",
         "V3Cars June 2026: N10 DCT Rs 19,94,900 and N10 DCT Dual Tone Rs 20,09,990 (exact).",
-        "One portal notes a GST-linked price reduction up to Rs 71,762 effective 22 Sep 2026; verify current dealer price."
+        "One portal notes a GST-linked price reduction up to Rs 71,762 effective 22 Sep 2025; verify current dealer price."
       ],
       "variants": [
         {"name": "N10 1.5 Turbo Petrol MT", "fuel": "Petrol", "transmission": "Manual", "ex_showroom_price_inr": 1903000, "is_estimate": true, "source_url": "https://www.cardekho.com/news/general/hyundai-creta-n-line-entrylevel-variant-discontinued-36215.htm"},
@@ -91,7 +91,7 @@
       "flags": [
         "CarWale June 2026 reports a Rs 600 hike on select variants (range now Rs 18.03-24.55L); HT Auto figures may predate it by that margin.",
         "Carhp.in lists a 29-sub-variant lineup incl. dual-tone, home-charger (HC), Knight and Lounge Edition sub-variants; exact prices for those sub-variants not verified, so only core variants included.",
-        "Prices may predate the 22 Sep 2026 GST rate cut; re-verify against dealer."
+        "Prices may predate the 22 Sep 2025 GST rate cut; re-verify against dealer."
       ],
       "variants": [
         {"name": "Executive 42kWh", "fuel": "Electric", "transmission": "Automatic", "ex_showroom_price_inr": 1802000, "is_estimate": true, "source_url": "https://auto.hindustantimes.com/new-cars/hyundai/creta-ev"},
@@ -115,7 +115,7 @@
       "flags": [
         "Mixed vintages: Executive/Prestige/Corporate/Platinum/Signature prices taken from Sep 2026 CSD page; Prestige AT, Corporate AT, Knight, dual-tone and 6S turbo variants from June 2026 V3Cars table.",
         "Diesel Automatic = 6-speed torque converter (mapped to Automatic); Turbo Petrol Automatic = 7DCT.",
-        "Prices may predate the 22 Sep 2026 GST rate cut; re-verify against dealer."
+        "Prices may predate the 22 Sep 2025 GST rate cut; re-verify against dealer."
       ],
       "variants": [
         {"name": "Executive 7S 1.5 Turbo Petrol MT", "fuel": "Petrol", "transmission": "Manual", "ex_showroom_price_inr": 1451000, "is_estimate": true, "source_url": "https://www.v3cars.com/hyundai-cars/alcazar/csd-price"},
@@ -150,7 +150,7 @@
       "flags": [
         "Portal prices in whole lakhs only; integer INR derived by x100000.",
         "Table updated 27/08/2026; Knight/Dual Tone editions included.",
-        "Prices may predate the 22 Sep 2026 GST rate cut; re-verify against dealer."
+        "Prices may predate the 22 Sep 2025 GST rate cut; re-verify against dealer."
       ],
       "variants": [
         {"name": "HX2 1.2 Petrol MT", "fuel": "Petrol", "transmission": "Manual", "ex_showroom_price_inr": 799000, "is_estimate": true, "source_url": "https://www.v3cars.com/hyundai-cars/venue"},
@@ -202,7 +202,7 @@
       "flags": [
         "N6 MT price is from Hyundai India's official site (is_estimate=false); all other variants from V3Cars portal (updated 25/06/2026).",
         "Launch prices (Nov 2025) were ~Rs 10,400 lower across variants; current portal table used.",
-        "Prices may predate the 22 Sep 2026 GST rate cut; re-verify against dealer."
+        "Prices may predate the 22 Sep 2025 GST rate cut; re-verify against dealer."
       ],
       "variants": [
         {"name": "N6 1.0 Turbo Petrol MT", "fuel": "Petrol", "transmission": "Manual", "ex_showroom_price_inr": 1066100, "is_estimate": false, "source_url": "https://www.hyundai.com/in/en/find-a-car/venue-n-line/price-in-pune"},
@@ -225,7 +225,7 @@
       "flags": [
         "Exact INR prices from Times Drive (launch list) and ETV Bharat (dual-tone rows).",
         "HX6+ Dual Tone IVT (Rs 15,17,400) appears in ETV Bharat under a garbled 'Turbo GDi + iVT' label; treated as 1.5 MPi IVT dual-tone - re-verify.",
-        "Prices may predate the 22 Sep 2026 GST rate cut; re-verify against dealer."
+        "Prices may predate the 22 Sep 2025 GST rate cut; re-verify against dealer."
       ],
       "variants": [
         {"name": "HX2 1.5 MPi MT", "fuel": "Petrol", "transmission": "Manual", "ex_showroom_price_inr": 1098400, "is_estimate": true, "source_url": "https://www.timesdrive.in/news/2026-hyundai-verna-facelift-launched-in-india-at-rs-10-98-lakh-check-whats-new-article-153790834"},
@@ -264,7 +264,7 @@
         "Portal prices in whole lakhs only; integer INR derived by x100000.",
         "A second V3Cars crawl showed slightly different figures (e.g. Asta(O) AT Rs 10.39L vs 10.43L here); fresher crawl used.",
         "Cars24 July 2026 variant list differed substantially and is treated as stale - discarded.",
-        "Prices may predate the 22 Sep 2026 GST rate cut; re-verify against dealer."
+        "Prices may predate the 22 Sep 2025 GST rate cut; re-verify against dealer."
       ],
       "variants": [
         {"name": "Era 1.2 Petrol MT", "fuel": "Petrol", "transmission": "Manual", "ex_showroom_price_inr": 599000, "is_estimate": true, "source_url": "https://www.v3cars.com/hyundai-cars/i20"},
@@ -295,7 +295,7 @@
       "notes": "Sporty i20 with 1.0L turbo-petrol (6MT/7DCT). N6 DCT discontinued May 2026; lineup streamlined to 5 variants. Prices are the June 2026 revised (post-hike) figures.",
       "flags": [
         "Exact INR from HT Auto (10 Jun 2026) after Rs 5,700-6,700 hike; V3Cars May 2026 figures were ~Rs 5-7k lower.",
-        "Prices may predate the 22 Sep 2026 GST rate cut; re-verify against dealer."
+        "Prices may predate the 22 Sep 2025 GST rate cut; re-verify against dealer."
       ],
       "variants": [
         {"name": "N6 1.0 Turbo Petrol MT", "fuel": "Petrol", "transmission": "Manual", "ex_showroom_price_inr": 927200, "is_estimate": true, "source_url": "https://auto.hindustantimes.com/auto/cars/want-to-buy-the-hyundai-i20-n-line-variant-wise-revised-price-list-detailed-41781083334410.html"},

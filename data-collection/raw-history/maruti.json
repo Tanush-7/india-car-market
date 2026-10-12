@@ -1,0 +1,797 @@
+{
+  "flags": [
+    "No launch events (new nameplate/new generation/major facelift/EV derivative) in window for: fronx (launched Apr 2023, before window), grand-vitara (Sep 2022; Apr 2025 MY25 update was a feature rejig, not a facelift), jimny (Jun 2023), ertiga, xl6, invicto (launched Jul 2023, before window), ciaz.",
+    "Victoris Oct 2026 price hike: exact effective day unconfirmed; recorded as 2026-10-01 with explicit note (Cartoq: 'effective immediately' in early-Oct 2026 dealer price lists, second month of sales).",
+    "Brezza GST-cut entry price inconsistency: official Sep 2026 announcement quotes Brezza new starting price Rs 8,25,900, but the Jul 2026 facelift's 1.0L Turbo LXi MT was Rs 7.40L; no per-variant Brezza GST price list found, so no Brezza GST price_changes recorded.",
+    "Jimny pre-GST price conflict: v3cars GST table lists Zeta All Grip Pro old price Rs 12,75,500, but CarWale reported the Aug-2026 post-hike starting price as Rs 12.54L; Mint's table uses slightly different figures again (Zeta MT 12.76L->12.32L).",
+    "Jimny Jan 2024 Rs 10,000 ex-showroom cut on Zeta AT, Alpha AT, Alpha AT dual-tone (CarWale): exact revised prices not published, not recorded. Diwali-2023-era 'cuts' (e.g. Rs 10.74L) were limited-period discounts/Thunder Edition offers, not official revisions - excluded.",
+    "Jimny variant renaming to 'Pro'/'All Grip Pro' happened at some point before Sep 2026; exact introduction date not established from sources found. Not treated as a launch.",
+    "e Vitara battery-included launch prices conflict: Team-BHP (Jun 2026 hike report) implies launch prices Delta 15.99/Zeta 17.19/Alpha 19.59, but CarWale's timeline and Daily Jagran reported Zeta 17.49/Alpha 19.79 in Feb 2026. Recorded per Team-BHP.",
+    "e Vitara Aug 31, 2026 hike: only range-start Rs 16.19L confirmed (CarWale); per-variant split not published.",
+    "Invicto GST starting price Rs 24,97,400 (official announcement) vs CarWale's post-Aug-2026 starting price Rs 24.94L - minor conflict.",
+    "Ertiga Jul 2025 revision: Cars24 webstory reported range Rs 9.09-13.44L, conflicting with PTI/CarDekho (Rs 8.97-13.26L); used PTI/CarDekho figures.",
+    "XL6 Jun 2026 hike date: v3cars 25 Jun 2026 vs CarWale log 7 Jul 2026; used 2026-06-25.",
+    "Invicto Jun 2026 hike date: Times Now updated Jun 29, 2026 vs CarWale log 6 Jul 2026; used 2026-06-29.",
+    "Aug 2026 hike round per DriveSpark (Fronx +7,500, Grand Vitara +5,000, Ertiga +5,000-7,500, Brezza +5,000, XL6 +5,000-7,500, Victoris +10,000) lacked per-variant detail and was not reflected in v3cars' pre-GST base prices (e.g. Fronx); omitted except where variant-level data found. Victoris entry in that table predates the Sep 3, 2026 launch - likely date/metadata error, ignored.",
+    "Grand Vitara MY25 Delta price conflict: 1tak lists Delta at Rs 12.67L vs carandbike Rs 12.53L; used carandbike (has old/new/difference).",
+    "Some portals mislabel the GST 2.0 cut as 'September 2025' (v3cars); used 2026-09-22 per Maruti's regulatory filing.",
+    "XL6 facelift expected late 2026 (CarWale, Jun 2026) is a rumor outside/not in window; not recorded.",
+    "Ciaz: no notable price revisions found in window; excluded from GST-cut list (production already ended)."
+  ],
+  "launches": [
+    {
+      "is_estimate": false,
+      "launch_date": "2026-09-03",
+      "launch_price_inr": 1049900,
+      "launch_type": "New nameplate",
+      "model_id": "victoris",
+      "notes": "Unveiled/launched Sep 3, 2026 (PTI); bookings opened same day; introductory prices announced Sep 15, 2026 starting Rs 10.49 lakh (Rs 10,49,900) ex-showroom; sales from Sep 22, 2026. Sold via Arena. 21 variants.",
+      "source_url": "https://www.moneycontrol.com/automobile/maruti-suzuki-launches-victoris-suv-at-rs-10-49-lakh-sales-start-september-22-article-13547923.html"
+    },
+    {
+      "is_estimate": false,
+      "launch_date": "2026-02-17",
+      "launch_price_inr": 1099000,
+      "launch_type": "EV derivative",
+      "model_id": "e-vitara",
+      "notes": "Maruti's first EV, launched Feb 17, 2026 at Rs 10.99 lakh ex-showroom under Battery-as-a-Service (battery rental Rs 3.99/km); battery-included pricing revealed Feb 18, 2026 from Rs 15.99 lakh (Delta 49 kWh). Two battery packs: 49 kWh / 61 kWh, up to 543 km claimed range.",
+      "source_url": "https://www.newsbytesapp.com/news/auto/maruti-e-vitara-launched-specs-price-features-range-availability-offers/story"
+    },
+    {
+      "is_estimate": false,
+      "launch_date": "2026-07-24",
+      "launch_price_inr": 740000,
+      "launch_type": "Major facelift",
+      "model_id": "brezza",
+      "notes": "2026 Brezza facelift launched Jul 24, 2026; base turbo-petrol price announced at launch, full price list revealed Jul 27, 2026. New 1.0L direct-injection turbo petrol (110hp) added alongside 1.5L NA petrol and CNG; 6MT replaces 5MT. Entry price dropped Rs 86,000 vs outgoing (Rs 8.26L).",
+      "source_url": "https://www.moneycontrol.com/automobile/maruti-suzuki-brezza-facelift-prices-announced-turbo-petrol-starts-at-rs-7-40-lakh-top-spec-variant-at-rs-13-70-lakh-article-13984974.html"
+    }
+  ],
+  "maker_id": "maruti",
+  "model_notes": [
+    {
+      "model_id": "ciaz",
+      "note": "Production ended ~April 2025 (Maruti confirmed; TOI). No replacement planned; remaining dealer stock sold with ~Rs 45,000 discount (Oct 2025). Excluded from Maruti's Sep 2026 GST-cut price revision list.",
+      "source_url": "https://timesofindia.indiatimes.com/auto/cars/end-of-an-era-maruti-suzuki-ciaz-production-stops/amp_articleshow/119895692.cms"
+    },
+    {
+      "model_id": "grand-vitara",
+      "note": "MY25 update launched Apr 8, 2025 was a feature rejig, not a facelift: no cosmetic changes; 6 airbags standardised, new Delta+ strong-hybrid variant (Rs 16.99L), (O) sunroof trims, AWD AT replacing AWD MT, 8-way powered driver seat, E20 compliance. Repricing recorded as price changes.",
+      "source_url": "https://www.autocarpro.in/news/2025-maruti-suzuki-grand-vitara-launched-at-%e2%82%b91142-lakh-with-standard-6-airbags-125788?amp=1"
+    },
+    {
+      "model_id": "victoris",
+      "note": "Introductory pricing ended Oct 2026 for the two top petrol variants only (ZXI+(O) MT/AT +Rs 15,000); rest of range unchanged. Entry LXI MT unchanged at Rs 10.50L.",
+      "source_url": "https://www.cartoq.com/car-news/maruti-suzuki-victoris-top-variants-price-hike-15000/"
+    },
+    {
+      "model_id": "all",
+      "note": "Maruti passed the full GST 2.0 rate-cut benefit effective 22 Sep 2026 (regulatory filing): Fronx cut up to Rs 1,12,600 (new start Rs 6,84,900); Brezza up to Rs 1,12,700 (new start Rs 8,25,900); Grand Vitara up to Rs 1,07,000 (new start Rs 10,76,500); Jimny up to Rs 51,900 (new start Rs 12,31,500); Ertiga up to Rs 46,400 (new start Rs 8,80,000); XL6 up to Rs 52,000 (new start Rs 11,52,300); Invicto up to Rs 61,700 (new start Rs 24,97,400). Entry-level small cars got cuts beyond the 8.5% GST benefit. EVs unaffected (5% GST).",
+      "source_url": "https://www.outlookbusiness.com/corporate/maruti-reduces-vehicle-prices-to-offer-gst-rate-cut-benefit-to-customers-entry-level-models-get-deeper-cuts"
+    },
+    {
+      "model_id": "brezza",
+      "note": "Facelift's 1.0L turbo variants attract 18% GST vs 40% on the 1.5L line-up, so the turbo entry (Rs 7.40L) undercuts the 1.5L LXi (Rs 8.30L) despite more power.",
+      "source_url": "https://www.autocarindia.com/car-news/2026-maruti-brezza-full-price-list-revealed-440298"
+    },
+    {
+      "model_id": "e-vitara",
+      "note": "Sold with Battery-as-a-Service option (Rs 3.99/km battery rental) alongside battery-included pricing; 8-year battery warranty, 60% buyback after 3 years offered at launch.",
+      "source_url": "https://www.thedailyjagran.com/auto/maruti-suzuki-e-vitara-launched-at-rs-10-99-lakh-with-baas-gets-543-km-range-level-2-adas-and-more-10299228"
+    }
+  ],
+  "price_changes": [
+    {
+      "model_id": "brezza",
+      "variant_name": "LXi 1.5 MT",
+      "effective_date": "2026-07-24",
+      "ex_showroom_price_inr": 830000,
+      "source_url": "https://www.autocarindia.com/car-news/2026-maruti-brezza-full-price-list-revealed-440298",
+      "is_estimate": false,
+      "notes": "Facelift-linked repricing; 1.5L petrol variants up by up to Rs 69,000, CNG up to Rs 19,000 costlier. vs outgoing Rs 8.26L (+Rs 4,000)"
+    },
+    {
+      "model_id": "brezza",
+      "variant_name": "VXi 1.5 MT",
+      "effective_date": "2026-07-24",
+      "ex_showroom_price_inr": 926000,
+      "source_url": "https://www.autocarindia.com/car-news/2026-maruti-brezza-full-price-list-revealed-440298",
+      "is_estimate": false,
+      "notes": "Facelift-linked repricing; 1.5L petrol variants up by up to Rs 69,000, CNG up to Rs 19,000 costlier."
+    },
+    {
+      "model_id": "brezza",
+      "variant_name": "ZXi 1.5 MT",
+      "effective_date": "2026-07-24",
+      "ex_showroom_price_inr": 1050000,
+      "source_url": "https://www.autocarindia.com/car-news/2026-maruti-brezza-full-price-list-revealed-440298",
+      "is_estimate": false,
+      "notes": "Facelift-linked repricing; 1.5L petrol variants up by up to Rs 69,000, CNG up to Rs 19,000 costlier."
+    },
+    {
+      "model_id": "brezza",
+      "variant_name": "VXi 1.5 AT",
+      "effective_date": "2026-07-24",
+      "ex_showroom_price_inr": 1061000,
+      "source_url": "https://www.autocarindia.com/car-news/2026-maruti-brezza-full-price-list-revealed-440298",
+      "is_estimate": false,
+      "notes": "Facelift-linked repricing; 1.5L petrol variants up by up to Rs 69,000, CNG up to Rs 19,000 costlier."
+    },
+    {
+      "model_id": "brezza",
+      "variant_name": "ZXi 1.5 AT",
+      "effective_date": "2026-07-24",
+      "ex_showroom_price_inr": 1185000,
+      "source_url": "https://www.autocarindia.com/car-news/2026-maruti-brezza-full-price-list-revealed-440298",
+      "is_estimate": false,
+      "notes": "Facelift-linked repricing; 1.5L petrol variants up by up to Rs 69,000, CNG up to Rs 19,000 costlier."
+    },
+    {
+      "model_id": "brezza",
+      "variant_name": "ZXi+ 1.5 AT",
+      "effective_date": "2026-07-24",
+      "ex_showroom_price_inr": 1355000,
+      "source_url": "https://www.autocarindia.com/car-news/2026-maruti-brezza-full-price-list-revealed-440298",
+      "is_estimate": false,
+      "notes": "Facelift-linked repricing; 1.5L petrol variants up by up to Rs 69,000, CNG up to Rs 19,000 costlier."
+    },
+    {
+      "model_id": "brezza",
+      "variant_name": "LXi 1.5 CNG MT",
+      "effective_date": "2026-07-24",
+      "ex_showroom_price_inr": 930000,
+      "source_url": "https://www.autocarindia.com/car-news/2026-maruti-brezza-full-price-list-revealed-440298",
+      "is_estimate": false,
+      "notes": "Facelift-linked repricing; 1.5L petrol variants up by up to Rs 69,000, CNG up to Rs 19,000 costlier."
+    },
+    {
+      "model_id": "brezza",
+      "variant_name": "VXi 1.5 CNG MT",
+      "effective_date": "2026-07-24",
+      "ex_showroom_price_inr": 999000,
+      "source_url": "https://www.autocarindia.com/car-news/2026-maruti-brezza-full-price-list-revealed-440298",
+      "is_estimate": false,
+      "notes": "Facelift-linked repricing; 1.5L petrol variants up by up to Rs 69,000, CNG up to Rs 19,000 costlier. Rs 18,000 cheaper than outgoing"
+    },
+    {
+      "model_id": "brezza",
+      "variant_name": "ZXi 1.5 CNG MT",
+      "effective_date": "2026-07-24",
+      "ex_showroom_price_inr": 1150000,
+      "source_url": "https://www.autocarindia.com/car-news/2026-maruti-brezza-full-price-list-revealed-440298",
+      "is_estimate": false,
+      "notes": "Facelift-linked repricing; 1.5L petrol variants up by up to Rs 69,000, CNG up to Rs 19,000 costlier."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Sigma MT",
+      "effective_date": "2025-02-01",
+      "ex_showroom_price_inr": 752000,
+      "source_url": "https://www.v3cars.com/news/february-2025-maruti-fronx-price-change",
+      "is_estimate": true,
+      "notes": "Feb 2025 portfolio-wide hike; most variants +Rs 500 (Sigma 7,51,500->7,52,000)"
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Delta AMT",
+      "effective_date": "2025-02-01",
+      "ex_showroom_price_inr": 888000,
+      "source_url": "https://www.v3cars.com/news/february-2025-maruti-fronx-price-change",
+      "is_estimate": true,
+      "notes": "Feb 2025 hike; AMT variants +Rs 5,500 (8,82,500->8,88,000)"
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Sigma MT",
+      "effective_date": "2025-04-01",
+      "ex_showroom_price_inr": 754500,
+      "source_url": "https://www.v3cars.com/news/april-2025-maruti-fronx-price-change",
+      "is_estimate": true,
+      "notes": "Apr 2025 hike; uniform +Rs 2,500 across range"
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Sigma MT",
+      "effective_date": "2025-08-01",
+      "ex_showroom_price_inr": 758500,
+      "source_url": "https://www.v3cars.com/news/aug-2025-maruti-fronx-price-change",
+      "is_estimate": true,
+      "notes": "Aug 2025 hike; +Rs 4,000 across range"
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Sigma MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 684900,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": false,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Delta MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 764900,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Delta Plus MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 804500,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Delta AMT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 814900,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Delta Plus AMT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 854500,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Sigma CNG MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 778900,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Delta CNG MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 858900,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Delta Plus Turbo MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 891900,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Zeta Turbo MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 970900,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Alpha Turbo MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1055900,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Zeta Turbo AT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1098900,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "fronx",
+      "variant_name": "Alpha Turbo AT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1183900,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-fronx-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision; Sigma cut Rs 73,600 (9.7%), Alpha Turbo AT cut Rs 1,10,600 (max)."
+    },
+    {
+      "model_id": "grand-vitara",
+      "variant_name": "Sigma MT",
+      "effective_date": "2025-04-08",
+      "ex_showroom_price_inr": 1142000,
+      "source_url": "https://az-ci-afde-prd-arena-03-efddeyfchzf9akbb.z01.azurefd.net/msilintiwebpdfcopyfromdefault/Media_Release_Maruti_Suzuki_Grand_Vitara_updated_with_6_Airbags_as_standard_&_new_premium_features.pdf",
+      "is_estimate": false,
+      "notes": "MY25 update; entry price Rs 11.42L per Maruti press release (old Rs 11.19L)"
+    },
+    {
+      "model_id": "grand-vitara",
+      "variant_name": "Delta MT",
+      "effective_date": "2025-04-08",
+      "ex_showroom_price_inr": 1253000,
+      "source_url": "https://carandbike.com/news/2025-maruti-grand-vitara-launched-at-rs-1142-lakh-gets-new-delta-hybrid-awd-at-variant-additional-features-3216628",
+      "is_estimate": true,
+      "notes": "MY25 update repricing (old 12.30L)"
+    },
+    {
+      "model_id": "grand-vitara",
+      "variant_name": "Zeta MT",
+      "effective_date": "2025-04-08",
+      "ex_showroom_price_inr": 1467000,
+      "source_url": "https://carandbike.com/news/2025-maruti-grand-vitara-launched-at-rs-1142-lakh-gets-new-delta-hybrid-awd-at-variant-additional-features-3216628",
+      "is_estimate": true,
+      "notes": "MY25 update repricing (old 14.26L)"
+    },
+    {
+      "model_id": "grand-vitara",
+      "variant_name": "Alpha MT",
+      "effective_date": "2025-04-08",
+      "ex_showroom_price_inr": 1614000,
+      "source_url": "https://carandbike.com/news/2025-maruti-grand-vitara-launched-at-rs-1142-lakh-gets-new-delta-hybrid-awd-at-variant-additional-features-3216628",
+      "is_estimate": true,
+      "notes": "MY25 update repricing (old 15.76L)"
+    },
+    {
+      "model_id": "grand-vitara",
+      "variant_name": "Alpha AT",
+      "effective_date": "2025-04-08",
+      "ex_showroom_price_inr": 1754000,
+      "source_url": "https://carandbike.com/news/2025-maruti-grand-vitara-launched-at-rs-1142-lakh-gets-new-delta-hybrid-awd-at-variant-additional-features-3216628",
+      "is_estimate": true,
+      "notes": "MY25 update repricing (old 17.16L)"
+    },
+    {
+      "model_id": "grand-vitara",
+      "variant_name": "Zeta Plus Hybrid",
+      "effective_date": "2025-04-08",
+      "ex_showroom_price_inr": 1860000,
+      "source_url": "https://carandbike.com/news/2025-maruti-grand-vitara-launched-at-rs-1142-lakh-gets-new-delta-hybrid-awd-at-variant-additional-features-3216628",
+      "is_estimate": true,
+      "notes": "MY25 update repricing (old 18.58L)"
+    },
+    {
+      "model_id": "grand-vitara",
+      "variant_name": "Alpha Plus Hybrid",
+      "effective_date": "2025-04-08",
+      "ex_showroom_price_inr": 1992000,
+      "source_url": "https://carandbike.com/news/2025-maruti-grand-vitara-launched-at-rs-1142-lakh-gets-new-delta-hybrid-awd-at-variant-additional-features-3216628",
+      "is_estimate": true,
+      "notes": "MY25 update repricing (old 19.99L, cut Rs 7,000)"
+    },
+    {
+      "model_id": "grand-vitara",
+      "variant_name": "Sigma MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1076500,
+      "source_url": "https://www.motorbeam.com/maruti-suzuki-gst-price-reduction/",
+      "is_estimate": false,
+      "notes": "GST 2.0 revision; cut up to Rs 1,07,000 across range per Maruti announcement"
+    },
+    {
+      "model_id": "victoris",
+      "variant_name": "ZXI Plus (O) MT",
+      "effective_date": "2026-10-01",
+      "ex_showroom_price_inr": 1597000,
+      "source_url": "https://www.cartoq.com/car-news/maruti-suzuki-victoris-top-variants-price-hike-15000/",
+      "is_estimate": true,
+      "notes": "Introductory pricing ended; +Rs 15,000 (was Rs 15.82L). Exact effective day unconfirmed: reported 'effective immediately' in early-Oct 2026 dealer price lists."
+    },
+    {
+      "model_id": "victoris",
+      "variant_name": "ZXI Plus (O) AT",
+      "effective_date": "2026-10-01",
+      "ex_showroom_price_inr": 1792000,
+      "source_url": "https://www.cartoq.com/car-news/maruti-suzuki-victoris-top-variants-price-hike-15000/",
+      "is_estimate": true,
+      "notes": "Introductory pricing ended; +Rs 15,000 (was Rs 17.77L). Exact effective day unconfirmed."
+    },
+    {
+      "model_id": "jimny",
+      "variant_name": "Zeta Pro MT",
+      "effective_date": "2026-08-31",
+      "ex_showroom_price_inr": 1254000,
+      "source_url": "https://www.carwale.com/maruti-suzuki-cars/jimny/",
+      "is_estimate": true,
+      "notes": "Uniform +Rs 15,000 hike across range; new starting price Rs 12.54L per CarWale update log. Conflicts with v3cars' pre-GST figure of Rs 12,75,500 (see flags)."
+    },
+    {
+      "model_id": "jimny",
+      "variant_name": "Zeta Pro MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1231500,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-jimny-new-gst-price-list-final",
+      "is_estimate": false,
+      "notes": "GST 2.0 revision. cut Rs 44,000 (matches official new starting price Rs 12,31,500)"
+    },
+    {
+      "model_id": "jimny",
+      "variant_name": "Alpha Pro MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1323200,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-jimny-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision. cut Rs 47,300"
+    },
+    {
+      "model_id": "jimny",
+      "variant_name": "Zeta Pro AT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1337500,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-jimny-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision. cut Rs 48,000"
+    },
+    {
+      "model_id": "jimny",
+      "variant_name": "Alpha Pro AT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1429200,
+      "source_url": "https://www.v3cars.com/news/confirmed-maruti-jimny-new-gst-price-list-final",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision. cut Rs 51,300"
+    },
+    {
+      "model_id": "jimny",
+      "variant_name": "Alpha Pro MT Dual Tone",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1339000,
+      "source_url": "https://www.livemint.com/auto-news/maruti-suzuki-jimny-the-true-blue-suv-becomes-affordable-by-up-to-rs-60-000-old-and-new-price-post-gst-2-0-compared-11759313756603.html",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision. cut Rs 46,000 per Mint table"
+    },
+    {
+      "model_id": "jimny",
+      "variant_name": "Alpha Pro AT Dual Tone",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1445000,
+      "source_url": "https://www.livemint.com/auto-news/maruti-suzuki-jimny-the-true-blue-suv-becomes-affordable-by-up-to-rs-60-000-old-and-new-price-post-gst-2-0-compared-11759313756603.html",
+      "is_estimate": true,
+      "notes": "GST 2.0 revision. cut Rs 60,000 per Mint table"
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "LXI",
+      "effective_date": "2025-02-01",
+      "ex_showroom_price_inr": 884000,
+      "source_url": "https://www.cars24.com/news/auto/maruti-ertiga-price-hiked-by-up-to-rs-15000-check-new-price-list-here/",
+      "is_estimate": true,
+      "notes": "Feb 2025 hike; LXI(O) +Rs 15,000, all other variants +Rs 10,000. Effective month Feb 2025; exact day not published."
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "LXI",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 897000,
+      "source_url": "https://money.rediff.com/news/market/maruti-suzuki-hikes-ertiga-baleno-prices/30283120250716",
+      "is_estimate": false,
+      "notes": "Standard 6 airbags; average +1.4% ex-showroom per Maruti regulatory filing (PTI); range Rs 8.97-13.25L"
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "VXI",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1006000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "VXI (O) CNG",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1101000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "VXI AT",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1146000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "ZXI",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1116000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "ZXI (O) CNG",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1211000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "ZXI AT",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1256000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "ZXI Plus",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1186000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "ZXI Plus AT",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1326000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "ertiga",
+      "variant_name": "LXI",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 880000,
+      "source_url": "https://www.motorbeam.com/maruti-suzuki-gst-price-reduction/",
+      "is_estimate": false,
+      "notes": "GST 2.0 revision; cut up to Rs 46,400 across range per Maruti announcement"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Zeta MT",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1184000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Zeta CNG MT",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1279000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Zeta AT",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1324000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Alpha MT",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1284000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Alpha AT",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1424000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Alpha Plus MT",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1344000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Alpha Plus AT",
+      "effective_date": "2025-07-16",
+      "ex_showroom_price_inr": 1484000,
+      "source_url": "https://www.cardekho.com/news/general/prices-of-maruti-wagon-r-fronx-ertiga-and-xl6-hiked-by-up-to-rs-14000-34402.htm",
+      "is_estimate": true,
+      "notes": "6-airbag standardisation; +Rs 13,000 vs prior range (CarDekho table)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Zeta MT",
+      "effective_date": "2026-06-25",
+      "ex_showroom_price_inr": 1157000,
+      "source_url": "https://mycarjunction.com/news/maruti-suzuki-xl6-price-hike-rs-10000",
+      "is_estimate": true,
+      "notes": "Mid-2026 hike; petrol variants +Rs 5,000, Zeta CNG +Rs 10,000; range started Rs 11.57L. Date: v3cars 25 Jun 2026 vs CarWale log 7 Jul 2026."
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Zeta MT",
+      "effective_date": "2026-08-17",
+      "ex_showroom_price_inr": 1162000,
+      "source_url": "https://www.v3cars.com/maruti-nexa-cars/xl6/1.5-mild-hybrid-petrol-automatic/alpha",
+      "is_estimate": true,
+      "notes": "Aug 2026 hike; petrol +Rs 5,000, Zeta CNG +Rs 7,500 (v3cars price list dated 17/08/2026)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Alpha MT",
+      "effective_date": "2026-08-17",
+      "ex_showroom_price_inr": 1259000,
+      "source_url": "https://www.v3cars.com/maruti-nexa-cars/xl6/1.5-mild-hybrid-petrol-automatic/alpha",
+      "is_estimate": true,
+      "notes": "Aug 2026 hike; petrol +Rs 5,000, Zeta CNG +Rs 7,500 (v3cars price list dated 17/08/2026)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Zeta CNG MT",
+      "effective_date": "2026-08-17",
+      "ex_showroom_price_inr": 1261000,
+      "source_url": "https://www.v3cars.com/maruti-nexa-cars/xl6/1.5-mild-hybrid-petrol-automatic/alpha",
+      "is_estimate": true,
+      "notes": "Aug 2026 hike; petrol +Rs 5,000, Zeta CNG +Rs 7,500 (v3cars price list dated 17/08/2026)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Zeta AT",
+      "effective_date": "2026-08-17",
+      "ex_showroom_price_inr": 1297000,
+      "source_url": "https://www.v3cars.com/maruti-nexa-cars/xl6/1.5-mild-hybrid-petrol-automatic/alpha",
+      "is_estimate": true,
+      "notes": "Aug 2026 hike; petrol +Rs 5,000, Zeta CNG +Rs 7,500 (v3cars price list dated 17/08/2026)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Alpha Plus MT",
+      "effective_date": "2026-08-17",
+      "ex_showroom_price_inr": 1307000,
+      "source_url": "https://www.v3cars.com/maruti-nexa-cars/xl6/1.5-mild-hybrid-petrol-automatic/alpha",
+      "is_estimate": true,
+      "notes": "Aug 2026 hike; petrol +Rs 5,000, Zeta CNG +Rs 7,500 (v3cars price list dated 17/08/2026)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Alpha Plus MT Dual Tone",
+      "effective_date": "2026-08-17",
+      "ex_showroom_price_inr": 1322000,
+      "source_url": "https://www.v3cars.com/maruti-nexa-cars/xl6/1.5-mild-hybrid-petrol-automatic/alpha",
+      "is_estimate": true,
+      "notes": "Aug 2026 hike; petrol +Rs 5,000, Zeta CNG +Rs 7,500 (v3cars price list dated 17/08/2026)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Alpha AT",
+      "effective_date": "2026-08-17",
+      "ex_showroom_price_inr": 1394000,
+      "source_url": "https://www.v3cars.com/maruti-nexa-cars/xl6/1.5-mild-hybrid-petrol-automatic/alpha",
+      "is_estimate": true,
+      "notes": "Aug 2026 hike; petrol +Rs 5,000, Zeta CNG +Rs 7,500 (v3cars price list dated 17/08/2026)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Alpha Plus AT",
+      "effective_date": "2026-08-17",
+      "ex_showroom_price_inr": 1442000,
+      "source_url": "https://www.v3cars.com/maruti-nexa-cars/xl6/1.5-mild-hybrid-petrol-automatic/alpha",
+      "is_estimate": true,
+      "notes": "Aug 2026 hike; petrol +Rs 5,000, Zeta CNG +Rs 7,500 (v3cars price list dated 17/08/2026)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Alpha Plus AT Dual Tone",
+      "effective_date": "2026-08-17",
+      "ex_showroom_price_inr": 1457000,
+      "source_url": "https://www.v3cars.com/maruti-nexa-cars/xl6/1.5-mild-hybrid-petrol-automatic/alpha",
+      "is_estimate": true,
+      "notes": "Aug 2026 hike; petrol +Rs 5,000, Zeta CNG +Rs 7,500 (v3cars price list dated 17/08/2026)"
+    },
+    {
+      "model_id": "xl6",
+      "variant_name": "Zeta MT",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 1152300,
+      "source_url": "https://www.motorbeam.com/maruti-suzuki-gst-price-reduction/",
+      "is_estimate": false,
+      "notes": "GST 2.0 revision; cut up to Rs 52,000 across range per Maruti announcement"
+    },
+    {
+      "model_id": "invicto",
+      "variant_name": "Zeta Plus 8S",
+      "effective_date": "2026-06-29",
+      "ex_showroom_price_inr": 2527000,
+      "source_url": "https://www.timesnownews.com/auto/car-news/maruti-suzuki-invicto-prices-increased-by-up-to-rs-25000-in-june-2026-article-154793783",
+      "is_estimate": true,
+      "notes": "+Rs 25,000 (was Rs 25.02L); other variants unchanged. Date: Times Now updated Jun 29, 2026; CarWale logs Jul 6, 2026."
+    },
+    {
+      "model_id": "invicto",
+      "variant_name": "Zeta Plus 7S",
+      "effective_date": "2026-08-01",
+      "ex_showroom_price_inr": 2494000,
+      "source_url": "https://www.carwale.com/news/maruti-invicto-becomes-dearer-prices-revised-for-all-variants/",
+      "is_estimate": true,
+      "notes": "Aug 2026 revision; base 7S -Rs 3,000"
+    },
+    {
+      "model_id": "invicto",
+      "variant_name": "Zeta Plus 8S",
+      "effective_date": "2026-08-01",
+      "ex_showroom_price_inr": 2537000,
+      "source_url": "https://www.carwale.com/news/maruti-invicto-becomes-dearer-prices-revised-for-all-variants/",
+      "is_estimate": true,
+      "notes": "Aug 2026 revision; 8S +Rs 10,000"
+    },
+    {
+      "model_id": "invicto",
+      "variant_name": "Alpha Plus 7S",
+      "effective_date": "2026-08-01",
+      "ex_showroom_price_inr": 2870000,
+      "source_url": "https://www.carwale.com/news/maruti-invicto-becomes-dearer-prices-revised-for-all-variants/",
+      "is_estimate": true,
+      "notes": "Aug 2026 revision; Alpha+ 7S +Rs 10,000 (range Rs 24.94-28.70L). Effective month Aug 2026; exact day not published."
+    },
+    {
+      "model_id": "invicto",
+      "variant_name": "Zeta Plus 7S",
+      "effective_date": "2026-09-22",
+      "ex_showroom_price_inr": 2497400,
+      "source_url": "https://www.motorbeam.com/maruti-suzuki-gst-price-reduction/",
+      "is_estimate": false,
+      "notes": "GST 2.0 revision; cut up to Rs 61,700 per Maruti announcement. Note: conflicts with CarWale's post-Aug-2026 starting price of Rs 24.94L."
+    },
+    {
+      "model_id": "e-vitara",
+      "variant_name": "Zeta 61 kWh",
+      "effective_date": "2026-06-22",
+      "ex_showroom_price_inr": 1749000,
+      "source_url": "https://www.team-bhp.com/news/maruti-suzuki-e-vitara-prices-hiked-rs-30000",
+      "is_estimate": true,
+      "notes": "First revision since launch; Zeta +Rs 30,000 (was Rs 17.19L per Team-BHP; conflicts with CarWale-timeline Feb reports, see flags)"
+    },
+    {
+      "model_id": "e-vitara",
+      "variant_name": "Alpha 61 kWh",
+      "effective_date": "2026-06-22",
+      "ex_showroom_price_inr": 1979000,
+      "source_url": "https://www.team-bhp.com/news/maruti-suzuki-e-vitara-prices-hiked-rs-30000",
+      "is_estimate": true,
+      "notes": "First revision since launch; Alpha +Rs 20,000 (was Rs 19.59L per Team-BHP)"
+    },
+    {
+      "model_id": "e-vitara",
+      "variant_name": "Delta 49 kWh",
+      "effective_date": "2026-08-31",
+      "ex_showroom_price_inr": 1619000,
+      "source_url": "https://www.carwale.com/maruti-suzuki-cars/e-vitara/",
+      "is_estimate": true,
+      "notes": "Aug 2026 hike up to Rs 20,000; range now starts Rs 16.19L (was Rs 15.99L). Per-variant split not published."
+    }
+  ],
+  "researched_at": "2026-10-12"
+}

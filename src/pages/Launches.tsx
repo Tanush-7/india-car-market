@@ -125,6 +125,9 @@ export function Launches(props: { ds: MarketDataset }) {
                           <Badge>{model.bodyType}</Badge>
                           {l.isEstimate && <Badge tone="amber">Estimate</Badge>}
                         </div>
+                        {l.notes && (
+                          <div className="mt-1 text-xs text-slate-500">{l.notes}</div>
+                        )}
                       </div>
                       <div className="text-sm text-slate-600">
                         {l.launchPrice ? `Launch price ${inrLakh(l.launchPrice)} ex-showroom` : 'Launch price n/a'}

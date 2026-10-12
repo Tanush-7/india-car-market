@@ -28,6 +28,11 @@ import {
   verifiedModels,
   verifiedVariants,
 } from './verifiedData';
+import {
+  verifiedLaunches,
+  verifiedModelNotes,
+  verifiedPriceHistory,
+} from './verifiedHistory';
 
 export interface MarketDataset {
   makers: Maker[];
@@ -69,18 +74,33 @@ export function sampleDataset(): MarketDataset {
 function mergedDataset(): MarketDataset {
   const replacedIds = new Set(verifiedModels.map((m) => m.id));
   const verifiedMakerIds = new Set(verifiedMakers.map((m) => m.id));
-  const models = [
-    ...verifiedModels,
-    ...sampleModels.filter((m) => !replacedIds.has(m.id)),
-  ];
+  const models = [...verifiedModels, ...sampleModels.filter((m) => !replacedIds.has(m.id))].map(
+    (m) => {
+      const extra = verifiedModelNotes[m.id];
+      return extra ? { ...m, notes: m.notes ? `${m.notes} | ${extra}` : extra } : m;
+    },
+  );
   const variants = [
     ...verifiedVariants,
     ...sampleVariants.filter((v) => !replacedIds.has(v.modelId)),
   ];
-  const priceHistory = samplePriceHistory.filter((h) => {
-    const v = sampleVariants.find((sv) => sv.id === h.variantId);
-    return v !== undefined && !replacedIds.has(v.modelId);
-  });
+  const priceHistory = [
+    ...verifiedPriceHistory,
+    ...samplePriceHistory.filter((h) => {
+      const v = sampleVariants.find((sv) => sv.id === h.variantId);
+      return v !== undefined && !replacedIds.has(v.modelId);
+    }),
+  ];
+  // Verified launches shadow sample entries for the same model/date/type.
+  const launchKeys = new Set(
+    verifiedLaunches.map((l) => `${l.modelId}|${l.launchDate}|${l.launchType}`),
+  );
+  const launches = [
+    ...verifiedLaunches,
+    ...sampleLaunches.filter(
+      (l) => !launchKeys.has(`${l.modelId}|${l.launchDate}|${l.launchType}`),
+    ),
+  ];
   return {
     makers: [
       ...verifiedMakers,
@@ -89,7 +109,7 @@ function mergedDataset(): MarketDataset {
     models,
     variants,
     priceHistory,
-    launches: sampleLaunches,
+    launches,
     meta: {
       isSampleData: false,
       verifiedModelCount: verifiedModels.length,

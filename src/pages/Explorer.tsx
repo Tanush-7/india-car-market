@@ -118,6 +118,8 @@ function ModelModal(props: { row: ModelRow; ds: MarketDataset; onClose: () => vo
                 .map((h) => (
                   <li key={h.id}>
                     {fmtDate(h.effectiveDate)}: {inr(h.exShowroomPrice)} ex-showroom
+                    {h.isEstimate ? ' (estimate)' : ''}
+                    {h.notes ? ` - ${h.notes}` : ''}
                   </li>
                 ))}
             </ul>

@@ -78,6 +78,8 @@ export interface PriceRecord {
   onRoadPrice?: number;
   effectiveDate: string; // ISO date
   sourceUrl: string;
+  /** e.g. "date approximate", re-dating notes. */
+  notes?: string;
 }
 
 export type LaunchType =
@@ -95,4 +97,5 @@ export interface LaunchEvent {
   launchPrice?: number;
   sourceUrl: string;
   isEstimate: boolean;
+  notes?: string;
 }

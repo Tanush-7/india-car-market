@@ -43,8 +43,8 @@ export function DataPage(props: { ds: MarketDataset }) {
             <span className="font-medium">Methodology caveat. </span>
             Only 15 of 1,109 researched prices come from official manufacturer price lists;
             the rest are portal-sourced estimates, badged as such on every model. Many portal
-            tables predate the 22 Sep 2026 GST rate cut and several makers revised prices in
-            late Sep / early Oct 2026, so figures may be marginally stale. A re-verification
+            tables predate the 22 Sep 2025 GST rate cut and several makers revised prices in
+            late Sep / early Oct 2025, so figures may be marginally stale. A re-verification
             pass against official price lists is planned. See data-collection/VALIDATION.md
             in the repo for the full per-model flags.
           </div>
