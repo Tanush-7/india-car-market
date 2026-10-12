@@ -78,6 +78,8 @@ export interface PriceRecord {
   onRoadPrice?: number;
   effectiveDate: string; // ISO date
   sourceUrl: string;
+  /** True when the price is an estimate rather than a published figure. */
+  isEstimate: boolean;
   /** e.g. "date approximate", re-dating notes. */
   notes?: string;
 }

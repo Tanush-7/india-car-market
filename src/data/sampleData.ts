@@ -402,27 +402,27 @@ export const variants: Variant[] = expandVariants();
 export const priceHistory: PriceRecord[] = [
   {
     id: 'ph-1', variantId: 'nexon-ev-v1', exShowroomPrice: Math.round(15.49 * LAKH),
-    effectiveDate: '2023-09-14', sourceUrl: SAMPLE_SOURCE,
+    effectiveDate: '2023-09-14', sourceUrl: SAMPLE_SOURCE, isEstimate: true,
   },
   {
     id: 'ph-2', variantId: 'nexon-ev-v1', exShowroomPrice: Math.round(14.74 * LAKH),
-    effectiveDate: '2024-02-01', sourceUrl: SAMPLE_SOURCE,
+    effectiveDate: '2024-02-01', sourceUrl: SAMPLE_SOURCE, isEstimate: true,
   },
   {
     id: 'ph-3', variantId: 'creta-v1', exShowroomPrice: Math.round(10.87 * LAKH),
-    effectiveDate: '2023-07-01', sourceUrl: SAMPLE_SOURCE,
+    effectiveDate: '2023-07-01', sourceUrl: SAMPLE_SOURCE, isEstimate: true,
   },
   {
     id: 'ph-4', variantId: 'creta-v1', exShowroomPrice: Math.round(11.0 * LAKH),
-    effectiveDate: '2024-01-16', sourceUrl: SAMPLE_SOURCE,
+    effectiveDate: '2024-01-16', sourceUrl: SAMPLE_SOURCE, isEstimate: true,
   },
   {
     id: 'ph-5', variantId: 'swift-v1', exShowroomPrice: Math.round(5.99 * LAKH),
-    effectiveDate: '2023-05-01', sourceUrl: SAMPLE_SOURCE,
+    effectiveDate: '2023-05-01', sourceUrl: SAMPLE_SOURCE, isEstimate: true,
   },
   {
     id: 'ph-6', variantId: 'swift-v1', exShowroomPrice: Math.round(6.49 * LAKH),
-    effectiveDate: '2024-05-09', sourceUrl: SAMPLE_SOURCE,
+    effectiveDate: '2024-05-09', sourceUrl: SAMPLE_SOURCE, isEstimate: true,
   },
 ];
 
