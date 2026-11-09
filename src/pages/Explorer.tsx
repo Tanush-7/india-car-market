@@ -5,6 +5,8 @@ import { enrichModels } from '../lib/enrich';
 import { bandForPrice, priceBands } from '../lib/bands';
 import { downloadCsv } from '../lib/csv';
 import { fmtDate, inr, inrLakh } from '../lib/format';
+import { onRoadBreakdown, onRoadTotal, ONROAD_UPDATED_AT } from '../data/onRoad';
+import { maintenanceForModel } from '../data/maintenance';
 import {
   Badge,
   Card,
@@ -16,13 +18,16 @@ import {
 
 const PAGE_SIZE = 15;
 
-type SortKey = 'start' | 'top' | 'maker' | 'name';
+type SortKey = 'start' | 'startDesc' | 'top' | 'topDesc' | 'maker' | 'name';
 
 function ModelModal(props: { row: ModelRow; ds: MarketDataset; onClose: () => void }) {
   const { row } = props;
   const history = props.ds.priceHistory.filter((h) =>
     row.variants.some((v) => v.id === h.variantId),
   );
+  const cheapest = row.variants.reduce((a, b) => (a.exShowroomPrice < b.exShowroomPrice ? a : b));
+  const onRoad = onRoadBreakdown(cheapest.exShowroomPrice, cheapest.fuelType);
+  const maint = maintenanceForModel(row.model.bodyType, row.startPrice, row.fuels);
   return (
     <div
       className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 p-4"
@@ -56,9 +61,10 @@ function ModelModal(props: { row: ModelRow; ds: MarketDataset; onClose: () => vo
             <thead>
               <tr className="border-b border-slate-200 text-left text-xs uppercase text-slate-500">
                 <th className="py-2 pr-2">Variant</th>
-                <th className="py-2 pr-2">Fuel</th>
-                <th className="py-2 pr-2">Transmission</th>
+                <th className="hidden py-2 pr-2 sm:table-cell">Fuel</th>
+                <th className="hidden py-2 pr-2 sm:table-cell">Transmission</th>
                 <th className="py-2 text-right">Ex-showroom</th>
+                <th className="py-2 text-right">On-road, Bengaluru (est.)</th>
                 <th className="py-2 text-right">Data</th>
               </tr>
             </thead>
@@ -66,20 +72,55 @@ function ModelModal(props: { row: ModelRow; ds: MarketDataset; onClose: () => vo
               {row.variants.map((v) => (
                 <tr key={v.id} className="border-b border-slate-100">
                   <td className="py-2 pr-2 font-medium text-slate-900">{v.name}</td>
-                  <td className="py-2 pr-2 text-slate-600">{v.fuelType}</td>
-                  <td className="py-2 pr-2 text-slate-600">{v.transmission}</td>
+                  <td className="hidden py-2 pr-2 text-slate-600 sm:table-cell">{v.fuelType}</td>
+                  <td className="hidden py-2 pr-2 text-slate-600 sm:table-cell">{v.transmission}</td>
                   <td className="py-2 text-right text-slate-900">{inr(v.exShowroomPrice)}</td>
+                  <td className="py-2 text-right text-slate-900">{inr(onRoadTotal(v.exShowroomPrice, v.fuelType))}</td>
                   <td className="py-2 text-right">
                     {v.isEstimate ? (
                       <Badge tone="amber">Estimate</Badge>
                     ) : (
-                      <Badge tone="green">Verified</Badge>
+                      <Badge tone="green">Exact price</Badge>
                     )}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+
+        <div className="mt-4 rounded-lg bg-slate-50 p-3 text-xs text-slate-600">
+          <div className="font-medium text-slate-700">
+            Bengaluru on-road breakdown - {cheapest.name} (cheapest variant), updated{' '}
+            {fmtDate(ONROAD_UPDATED_AT)}
+          </div>
+          <ul className="mt-1 space-y-0.5">
+            {onRoad.lines.map((l) => (
+              <li key={l.label} className="flex justify-between gap-2">
+                <span>
+                  {l.label}
+                  {l.kind === 'estimate' ? ' *' : ''}
+                </span>
+                <span className="font-medium text-slate-900">{inr(l.amount)}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2">
+            * Insurance is an estimate (~3.5% of ex-showroom); get a dealer quote. Karnataka
+            road-tax slabs, 11% cess on the tax and Rs 1,000 road-safety tax per the state
+            rules in force from 1 Apr 2026. Hypothecation (Rs 1,500, only if financed) and
+            dealer handling charges are not included. Every variant's on-road total is in
+            the table above.
+          </p>
+        </div>
+
+        <div className="mt-4 rounded-lg bg-slate-50 p-3 text-xs text-slate-600">
+          <div className="font-medium text-slate-700">Typical annual maintenance (estimate)</div>
+          <div className="mt-1">
+            {inr(maint.low)} - {inr(maint.high)} per year ({maint.label} segment average).
+            Includes scheduled service plus a wear-and-tear reserve; excludes fuel, insurance
+            and depreciation. See the Dashboard chart for the maker comparison.
+          </div>
         </div>
 
         <div className="mt-4 grid gap-3 text-xs text-slate-600 sm:grid-cols-2">
@@ -90,7 +131,7 @@ function ModelModal(props: { row: ModelRow; ds: MarketDataset; onClose: () => vo
             </div>
             <div>Last verified: {fmtDate(row.model.lastVerifiedAt)}</div>
             <div>
-              Price basis: {row.model.isEstimate ? 'estimates, not published prices' : 'published ex-showroom prices'}
+              Price basis: {row.model.isEstimate ? 'portal estimates, not official list prices' : 'official manufacturer list prices'}
             </div>
           </div>
           <div className="rounded-lg bg-slate-50 p-3">
@@ -169,7 +210,9 @@ export function Explorer(props: { ds: MarketDataset }) {
     });
     const cmp: Record<SortKey, (a: ModelRow, b: ModelRow) => number> = {
       start: (a, b) => (a.startPrice ?? 0) - (b.startPrice ?? 0),
+      startDesc: (a, b) => (b.startPrice ?? 0) - (a.startPrice ?? 0),
       top: (a, b) => (a.topPrice ?? 0) - (b.topPrice ?? 0),
+      topDesc: (a, b) => (b.topPrice ?? 0) - (a.topPrice ?? 0),
       maker: (a, b) => `${a.makerName} ${a.model.name}`.localeCompare(`${b.makerName} ${b.model.name}`),
       name: (a, b) => a.model.name.localeCompare(b.model.name),
     };
@@ -189,28 +232,42 @@ export function Explorer(props: { ds: MarketDataset }) {
   const exportCsv = () =>
     downloadCsv(
       'carscope-models.csv',
-      filtered.map((r) => ({
-        maker: r.makerName,
-        model: r.model.name,
-        body_type: r.model.bodyType,
-        start_ex_showroom_inr: r.startPrice,
-        top_ex_showroom_inr: r.topPrice,
-        variants: r.variants.length,
-        fuels: r.fuels.join(' / '),
-        transmissions: r.transmissions.join(' / '),
-        launch_year: r.launchYear ?? '',
-        status: r.model.status,
-        source: r.model.sourceUrl,
-        last_verified: r.model.lastVerifiedAt,
-        is_estimate: r.model.isEstimate ? 'yes' : 'no',
-      })),
+      filtered.map((r) => {
+        const cheapest = r.variants.reduce((a, b) =>
+          a.exShowroomPrice < b.exShowroomPrice ? a : b,
+        );
+        const dearest = r.variants.reduce((a, b) =>
+          a.exShowroomPrice > b.exShowroomPrice ? a : b,
+        );
+        const maint = maintenanceForModel(r.model.bodyType, r.startPrice, r.fuels);
+        return {
+          maker: r.makerName,
+          model: r.model.name,
+          body_type: r.model.bodyType,
+          start_ex_showroom_inr: r.startPrice,
+          top_ex_showroom_inr: r.topPrice,
+          start_onroad_bengaluru_inr: onRoadTotal(cheapest.exShowroomPrice, cheapest.fuelType),
+          top_onroad_bengaluru_inr: onRoadTotal(dearest.exShowroomPrice, dearest.fuelType),
+          annual_maintenance_low_inr: maint.low,
+          annual_maintenance_high_inr: maint.high,
+          maintenance_segment: maint.label,
+          variants: r.variants.length,
+          fuels: r.fuels.join(' / '),
+          transmissions: r.transmissions.join(' / '),
+          launch_year: r.launchYear ?? '',
+          status: r.model.status,
+          source: r.model.sourceUrl,
+          last_verified: r.model.lastVerifiedAt,
+          is_estimate: r.model.isEstimate ? 'yes' : 'no',
+        };
+      }),
     );
 
   return (
     <div>
       <PageHeader
         title="Model Explorer"
-        sub="Search and filter every currently listed model. Prices are ex-showroom."
+        sub="Search and filter every currently listed model. Prices are ex-showroom; tap a model for its Bengaluru on-road price and maintenance estimate."
         right={
           <button
             onClick={exportCsv}
@@ -237,8 +294,10 @@ export function Explorer(props: { ds: MarketDataset }) {
             options={[{ value: 'all', label: 'All' }, ...transmissions.map((m) => ({ value: m, label: m }))]} />
           <FilterSelect label="Sort by" value={sort} onChange={(v) => setSort(v as SortKey)}
             options={[
-              { value: 'start', label: 'Starting price' },
-              { value: 'top', label: 'Top price' },
+              { value: 'start', label: 'Starting price: low to high' },
+              { value: 'startDesc', label: 'Starting price: high to low' },
+              { value: 'top', label: 'Top price: low to high' },
+              { value: 'topDesc', label: 'Top price: high to low' },
               { value: 'maker', label: 'Maker' },
               { value: 'name', label: 'Model name' },
             ]} />
@@ -250,19 +309,21 @@ export function Explorer(props: { ds: MarketDataset }) {
       ) : (
         <Card>
           <div className="mb-2 text-xs text-slate-500">
-            {filtered.length} model{filtered.length === 1 ? '' : 's'} - price band filter uses starting price
+            {filtered.length} model{filtered.length === 1 ? '' : 's'} - price band filter uses starting price.
+            Researched = model confirmed on sale with sourced prices. Estimate = price from an
+            auto portal, not the maker's list. Exact price = official manufacturer list price.
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[760px] text-sm">
+            <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-200 text-left text-xs uppercase text-slate-500">
                   <th className="py-2 pr-2">Maker</th>
                   <th className="py-2 pr-2">Model</th>
-                  <th className="py-2 pr-2">Body</th>
+                  <th className="hidden py-2 pr-2 lg:table-cell">Body</th>
                   <th className="py-2 pr-2 text-right">Starts at</th>
-                  <th className="py-2 pr-2 text-right">Tops at</th>
-                  <th className="py-2 pr-2 text-right">Variants</th>
-                  <th className="py-2 pr-2">Fuel</th>
+                  <th className="hidden py-2 pr-2 text-right md:table-cell">Tops at</th>
+                  <th className="hidden py-2 pr-2 text-right md:table-cell">Variants</th>
+                  <th className="hidden py-2 pr-2 lg:table-cell">Fuel</th>
                   <th className="py-2 pr-2">Data</th>
                 </tr>
               </thead>
@@ -275,17 +336,17 @@ export function Explorer(props: { ds: MarketDataset }) {
                   >
                     <td className="py-2 pr-2 text-slate-600">{r.makerName}</td>
                     <td className="py-2 pr-2 font-medium text-slate-900">{r.model.name}</td>
-                    <td className="py-2 pr-2 text-slate-600">{r.model.bodyType}</td>
+                    <td className="hidden py-2 pr-2 text-slate-600 lg:table-cell">{r.model.bodyType}</td>
                     <td className="py-2 pr-2 text-right font-medium text-slate-900">
                       {r.startPrice ? inrLakh(r.startPrice) : '—'}
                     </td>
-                    <td className="py-2 pr-2 text-right text-slate-600">
+                    <td className="hidden py-2 pr-2 text-right text-slate-600 md:table-cell">
                       {r.topPrice ? inrLakh(r.topPrice) : '—'}
                     </td>
-                    <td className="py-2 pr-2 text-right text-slate-600">{r.variants.length}</td>
-                    <td className="py-2 pr-2 text-slate-600">{r.fuels.join(', ')}</td>
+                    <td className="hidden py-2 pr-2 text-right text-slate-600 md:table-cell">{r.variants.length}</td>
+                    <td className="hidden py-2 pr-2 text-slate-600 lg:table-cell">{r.fuels.join(', ')}</td>
                     <td className="py-2 pr-2">
-                      {r.model.isEstimate ? <Badge tone="amber">Estimate</Badge> : <Badge tone="green">Verified</Badge>}
+                      {r.model.isEstimate ? <Badge tone="amber">Estimate</Badge> : <Badge tone="green">Exact price</Badge>}
                     </td>
                   </tr>
                 ))}

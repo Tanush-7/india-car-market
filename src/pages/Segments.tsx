@@ -121,6 +121,9 @@ export function Segments(props: { ds: MarketDataset }) {
       </Card>
 
       <Card title="Segment detail" className="mb-4">
+        <p className="mb-2 text-xs text-slate-500 sm:hidden">
+          Swipe sideways to see all columns.
+        </p>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[900px] text-sm">
             <thead>

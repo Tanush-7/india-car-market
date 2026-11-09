@@ -1,6 +1,10 @@
 import { useMemo } from 'react';
 import type { MarketDataset } from '../data/provider';
 import { priceBands } from '../lib/bands';
+import { fmtDate } from '../lib/format';
+import { COMPLAINTS_UPDATED_AT } from '../data/complaints';
+import { MAINTENANCE_UPDATED_AT } from '../data/maintenance';
+import { ONROAD_UPDATED_AT } from '../data/onRoad';
 import { Badge, Card, PageHeader } from '../components/ui';
 
 export function DataPage(props: { ds: MarketDataset }) {
@@ -12,11 +16,36 @@ export function DataPage(props: { ds: MarketDataset }) {
       active: props.ds.models.filter((m) => m.status === 'active').length,
       discontinued: props.ds.models.filter((m) => m.status === 'discontinued').length,
       variants: props.ds.variants.length,
+      availableVariants: props.ds.variants.filter((v) => v.availabilityStatus === 'available').length,
       priceRecords: props.ds.priceHistory.length,
       launches: props.ds.launches.length,
     }),
     [props.ds],
   );
+
+  // Researched vs illustrative-sample split, computed from the dataset so
+  // the banner, the Explorer badges and this page can never disagree.
+  const split = useMemo(() => {
+    const isSample = (sourceUrl: string) => sourceUrl === 'sample';
+    const researchedModels = props.ds.models.filter((m) => !isSample(m.sourceUrl));
+    const sampleModels = props.ds.models.filter((m) => isSample(m.sourceUrl));
+    const researchedVariants = props.ds.variants.filter((v) => !isSample(v.sourceUrl ?? ''));
+    const sampleVariants = props.ds.variants.filter((v) => isSample(v.sourceUrl ?? ''));
+    const exactPrices = props.ds.variants.filter((v) => !v.isEstimate).length;
+    return {
+      researchedModels: researchedModels.length,
+      sampleModels: sampleModels.length,
+      sampleActiveNames: sampleModels
+        .filter((m) => m.status === 'active')
+        .map((m) => m.name)
+        .join(', '),
+      researchedVariants: researchedVariants.length,
+      researchedAvailableVariants: researchedVariants.filter((v) => v.availabilityStatus === 'available').length,
+      sampleVariants: sampleVariants.length,
+      sampleAvailableVariants: sampleVariants.filter((v) => v.availabilityStatus === 'available').length,
+      exactPrices,
+    };
+  }, [props.ds]);
 
   return (
     <div>
@@ -41,12 +70,13 @@ export function DataPage(props: { ds: MarketDataset }) {
         {!props.ds.meta.isSampleData && (
           <div className="mt-3 rounded-lg bg-amber-50 p-3 text-xs text-amber-900">
             <span className="font-medium">Methodology caveat. </span>
-            Only 15 of 1,109 researched prices come from official manufacturer price lists;
-            the rest are portal-sourced estimates, badged as such on every model. Many portal
-            tables predate the 22 Sep 2025 GST rate cut and several makers revised prices in
-            late Sep / early Oct 2025, so figures may be marginally stale. A re-verification
-            pass against official price lists is planned. See data-collection/VALIDATION.md
-            in the repo for the full per-model flags.
+            Only {split.exactPrices} of {split.researchedAvailableVariants} researched variant
+            prices come from official manufacturer price lists; the rest are portal-sourced
+            estimates, badged as such on every model. Many portal tables predate the 22 Sep
+            2025 GST rate cut and several makers revised prices in late Sep / early Oct 2025,
+            so figures may be marginally stale. A re-verification pass against official price
+            lists is planned. See data-collection/VALIDATION.md in the repo for the full
+            per-model flags.
           </div>
         )}
         <div className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
@@ -55,7 +85,8 @@ export function DataPage(props: { ds: MarketDataset }) {
             ['Models (total)', counts.models],
             ['Active models', counts.active],
             ['Discontinued', counts.discontinued],
-            ['Variants', counts.variants],
+            ['Variants (total)', counts.variants],
+            ['Variants (available)', counts.availableVariants],
             ['Price records', counts.priceRecords],
             ['Launch events', counts.launches],
           ].map(([label, v]) => (
@@ -65,9 +96,31 @@ export function DataPage(props: { ds: MarketDataset }) {
             </div>
           ))}
         </div>
+        <div className="mt-3 rounded-lg bg-slate-50 p-3 text-xs text-slate-600">
+          <div className="font-medium text-slate-700">What is researched, and what is sample</div>
+          <ul className="mt-1 list-disc space-y-0.5 pl-5">
+            <li>
+              {split.researchedModels} of {counts.models} models are researched records;{' '}
+              {split.sampleModels} are illustrative sample ({split.sampleActiveNames || 'none'}{' '}
+              still shown as active).
+            </li>
+            <li>
+              {split.researchedAvailableVariants} of {counts.availableVariants} available variants
+              are researched; {split.sampleAvailableVariants} belong to the sample models.
+            </li>
+            <li>
+              {split.exactPrices} variant prices are exact official-list prices; the other
+              researched prices are portal estimates. "Researched" means the model was
+              confirmed on sale with sourced prices; "Estimate" / "Exact price" badges in the
+              Explorer describe the price, not the model.
+            </li>
+          </ul>
+        </div>
         <p className="mt-3 text-xs text-slate-500">
-          Last updated: {props.ds.meta.lastUpdated}. To replace the sample data with verified
-          records, follow the Supabase setup below. No frontend changes are needed.
+          Price data last updated: {fmtDate(props.ds.meta.lastUpdated)}. On-road figures last
+          updated {fmtDate(ONROAD_UPDATED_AT)}, maintenance estimates {fmtDate(MAINTENANCE_UPDATED_AT)},
+          recall figures {fmtDate(COMPLAINTS_UPDATED_AT)}. To replace the sample data with
+          verified records, follow the Supabase setup below. No frontend changes are needed.
         </p>
       </Card>
 
@@ -130,6 +183,40 @@ export function DataPage(props: { ds: MarketDataset }) {
           <li>Mark a model <code className="rounded bg-slate-100 px-1">discontinued</code> instead of deleting it; history stays intact.</li>
           <li>Do not scrape sites against their terms. Prefer official price lists, press releases and permitted feeds, or manual imports.</li>
         </ul>
+      </Card>
+
+      <Card title="Weekly refresh" sub="Every Monday: data files only, no component changes" className="mt-4">
+        <ol className="list-decimal space-y-2 pl-5 text-sm text-slate-600">
+          <li>
+            Prices: check official price lists and the portal sources in{' '}
+            <code className="rounded bg-slate-100 px-1">data-collection/VALIDATION.md</code> for
+            changes; update <code className="rounded bg-slate-100 px-1">src/data/verifiedData.ts</code>{' '}
+            (and <code className="rounded bg-slate-100 px-1">verifiedHistory.ts</code> for price
+            changes) and set <code className="rounded bg-slate-100 px-1">VERIFIED_AT</code> to the
+            refresh date. The banner, footer and this page read that date automatically.
+          </li>
+          <li>
+            On-road: re-check the Karnataka slabs in{' '}
+            <code className="rounded bg-slate-100 px-1">src/data/onRoad.ts</code> (Spinny /
+            mycarhelpline) and update <code className="rounded bg-slate-100 px-1">ONROAD_UPDATED_AT</code>.
+          </li>
+          <li>
+            Maintenance: re-check the segment averages in{' '}
+            <code className="rounded bg-slate-100 px-1">src/data/maintenance.ts</code> (motomotar
+            2026 guide) and update <code className="rounded bg-slate-100 px-1">MAINTENANCE_UPDATED_AT</code>.
+          </li>
+          <li>
+            Recalls: re-check the SIAM portal summary in{' '}
+            <code className="rounded bg-slate-100 px-1">src/data/complaints.ts</code> (Moneycontrol /
+            Factly) and update <code className="rounded bg-slate-100 px-1">COMPLAINTS_UPDATED_AT</code>.
+          </li>
+          <li>
+            Run <code className="rounded bg-slate-100 px-1">npm test</code> and{' '}
+            <code className="rounded bg-slate-100 px-1">npm run build</code>, then push to{' '}
+            <code className="rounded bg-slate-100 px-1">main</code> - GitHub Actions deploys to
+            GitHub Pages automatically. Full checklist: README "Weekly refresh".
+          </li>
+        </ol>
       </Card>
     </div>
   );

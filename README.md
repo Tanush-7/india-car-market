@@ -22,7 +22,21 @@ TypeScript, Vite, Tailwind CSS and Recharts; data lives in Supabase
   maker/fuel filters.
 - **Launches**: Oct 2023 - Oct 2026 launch history (nameplates, generations,
   facelifts, EV derivatives) plus discontinued models kept separate.
-- **Data & Setup**: dataset status, counting rules, Supabase setup, update workflow.
+- **Complaints & Recalls**: why India has no public per-model complaint counts,
+  2025 vehicle recalls by maker (SIAM data via Moneycontrol), recalls since 2012
+  and defect categories (Factly / SIAM portal), plus where to check a recall or
+  file a complaint (NCH 1915).
+- **Bengaluru on-road price**: every variant in the Model Explorer shows an
+  estimated on-road total for Bengaluru (Karnataka road-tax slabs + 11% cess +
+  Rs 1,000 road-safety tax + registration / HSRP / FASTag + first-year insurance
+  estimate + 1% TCS above Rs 10 lakh), with a full breakdown in the model view.
+- **Annual maintenance**: Dashboard chart of typical annual maintenance by maker
+  and a per-model segment estimate in the Model Explorer, from published 2026
+  segment averages (scheduled service + wear-and-tear reserve; fuel, insurance
+  and depreciation excluded). All figures are labelled estimates.
+- **Data & Setup**: verification progress with the researched-vs-sample split
+  computed from the dataset (banner, Explorer badges and this page always agree),
+  counting rules, Supabase setup, and the weekly refresh checklist.
 
 ## Counting rules
 
@@ -72,11 +86,44 @@ To go live:
 - New launch: insert a row in `launch_history`; add the model + variants.
 - Discontinuation: set `current_status = 'discontinued'`; history is preserved.
 
+## Weekly refresh (every Monday)
+
+The site shows two visible dates: the price-data date (banner, footer, Data &
+Setup) and the derived-figures date (on-road, maintenance, recalls). Both come
+from data files, never from components, so a refresh is a data edit + push.
+
+1. **Prices** - check official manufacturer price lists and the portal sources
+   listed in `data-collection/VALIDATION.md` for changes since the last refresh.
+   Update `src/data/verifiedData.ts` (and `src/data/verifiedHistory.ts` for price
+   changes) and set `VERIFIED_AT` to the refresh date. Do not re-date prices you
+   did not actually check.
+2. **Bengaluru on-road** - re-check the Karnataka slabs in
+   `src/data/onRoad.ts` (Spinny, mycarhelpline) and update `ONROAD_UPDATED_AT`.
+   Change the slab table if the state revises rates; the components compute from it.
+3. **Maintenance** - re-check the segment averages in
+   `src/data/maintenance.ts` (motomotar 2026 guide) and update
+   `MAINTENANCE_UPDATED_AT`. Only change a segment range when the source updates it.
+4. **Complaints & recalls** - re-check the SIAM portal summaries in
+   `src/data/complaints.ts` (Moneycontrol / Factly) and update
+   `COMPLAINTS_UPDATED_AT`. If a per-model complaint dataset ever becomes public,
+   add it as a new table in this file with its source and date; do not use
+   aggregator counts (self-selected, unverified).
+5. **Verify** - run `npm test` and `npm run build` locally; fix any failures.
+6. **Ship** - commit and push to `main`. `.github/workflows/deploy.yml` runs
+   tests, builds and deploys to GitHub Pages. Check the live site afterwards:
+   `https://tanush.tech/india-car-market/` and
+   `https://tanush-7.github.io/india-car-market/`.
+
+Price-data re-verification against official lists is a separate, larger pass
+(most current prices are portal estimates); it is not part of the weekly refresh.
+
 ## Project layout
 
-- `src/data/` - types, sample dataset, data provider (sample/Supabase switch)
+- `src/data/` - types, sample dataset, verified dataset, data provider (sample/Supabase switch),
+  and the derived tables refreshed weekly: `onRoad.ts` (Karnataka on-road math),
+  `maintenance.ts` (segment maintenance estimates), `complaints.ts` (recall figures + sources)
 - `src/lib/` - price-band logic, formatting, CSV export, model enrichment
-- `src/pages/` - the seven site pages
+- `src/pages/` - the eight site pages
 - `src/components/` - layout, cards, filters, badges
 - `supabase/migrations/` - PostgreSQL schema
 - `.github/workflows/` - build, test and deploy pipeline

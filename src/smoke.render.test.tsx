@@ -19,9 +19,10 @@ const { Makers } = await import('./pages/Makers');
 const { BodyFuel } = await import('./pages/BodyFuel');
 const { Launches } = await import('./pages/Launches');
 const { DataPage } = await import('./pages/DataPage');
+const { Complaints } = await import('./pages/Complaints');
 
 describe('page renders', () => {
-  it('renders all seven pages against the merged dataset', async () => {
+  it('renders all eight pages against the merged dataset', async () => {
     const ds = await provider.loadDataset();
     expect(ds.meta.isSampleData).toBe(false);
     expect(ds.meta.verifiedModelCount).toBe(75);
@@ -33,6 +34,7 @@ describe('page renders', () => {
       ['makers', renderToString(<Makers ds={ds} />)],
       ['bodyfuel', renderToString(<BodyFuel ds={ds} />)],
       ['launches', renderToString(<Launches ds={ds} />)],
+      ['complaints', renderToString(<Complaints />)],
       ['data', renderToString(<DataPage ds={ds} />)],
     ];
     for (const [name, html] of pages) {
@@ -45,5 +47,6 @@ describe('page renders', () => {
     expect(dash).toContain(activeCount);
     expect(pages[1][1]).toContain('Model Explorer');
     expect(pages[5][1]).toContain('Launch History');
+    expect(pages[6][1]).toContain('Complaints &amp; Recalls');
   });
 });

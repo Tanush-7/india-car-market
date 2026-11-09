@@ -100,6 +100,9 @@ export function Makers(props: { ds: MarketDataset }) {
       </div>
 
       <Card title="Maker x price-band heatmap" sub={`Cell value: ${cellMode === 'models' ? 'distinct models' : 'variants'}`} className="mb-4">
+        <p className="mb-2 text-xs text-slate-500 sm:hidden">
+          Swipe sideways to see all price bands.
+        </p>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[900px] border-collapse text-xs">
             <thead>

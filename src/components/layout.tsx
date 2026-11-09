@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { fmtDate } from '../lib/format';
 
 export type PageId =
   | 'dashboard'
@@ -7,6 +8,7 @@ export type PageId =
   | 'makers'
   | 'bodyfuel'
   | 'launches'
+  | 'complaints'
   | 'data';
 
 export const NAV: { id: PageId; label: string }[] = [
@@ -16,6 +18,7 @@ export const NAV: { id: PageId; label: string }[] = [
   { id: 'makers', label: 'Makers' },
   { id: 'bodyfuel', label: 'Body & Fuel' },
   { id: 'launches', label: 'Launches' },
+  { id: 'complaints', label: 'Complaints & Recalls' },
   { id: 'data', label: 'Data & Setup' },
 ];
 
@@ -23,6 +26,12 @@ export interface DataStatus {
   isSampleData: boolean;
   verifiedModelCount: number;
   totalModelCount: number;
+  /** Active models shown on the site. */
+  activeModelCount: number;
+  /** Active models that are illustrative sample records, not researched ones. */
+  sampleActiveCount: number;
+  lastUpdated: string;
+  derivedUpdatedAt: string;
 }
 
 export function Shell(props: {
@@ -41,9 +50,12 @@ export function Shell(props: {
         </div>
       ) : (
         <div className="bg-amber-100 px-4 py-2 text-center text-xs font-medium text-amber-900">
-          Market data: {dataStatus.verifiedModelCount} of {dataStatus.totalModelCount} models
-          verified Oct 12, 2026 (rest are illustrative sample). Most verified prices are
-          portal estimates, not manufacturer list prices - see Data & Setup.
+          Market data last updated {fmtDate(dataStatus.lastUpdated)}: {dataStatus.verifiedModelCount} of{' '}
+          {dataStatus.totalModelCount} models researched. {dataStatus.activeModelCount} active models
+          shown
+          {dataStatus.sampleActiveCount > 0 &&
+            ` (includes ${dataStatus.sampleActiveCount} illustrative sample model${dataStatus.sampleActiveCount === 1 ? '' : 's'})`}
+          . Most prices are portal estimates, not official list prices - see Data & Setup.
         </div>
       )}
       <header className="border-b border-slate-200 bg-white">
@@ -77,8 +89,9 @@ export function Shell(props: {
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-4 text-xs text-slate-500">
           CarScope India - open car-price comparison for the Indian market. All segment math
-          uses ex-showroom prices. Update the data without touching the frontend: swap the
-          dataset via Supabase (see Data & Setup).
+          uses ex-showroom prices. Price data last updated {fmtDate(dataStatus.lastUpdated)};
+          on-road, maintenance and recall figures last updated {fmtDate(dataStatus.derivedUpdatedAt)}.
+          Update the data without touching the frontend: swap the dataset via Supabase (see Data & Setup).
         </div>
       </footer>
     </div>

@@ -7,9 +7,10 @@ import { Segments } from './pages/Segments';
 import { Makers } from './pages/Makers';
 import { BodyFuel } from './pages/BodyFuel';
 import { Launches } from './pages/Launches';
+import { Complaints } from './pages/Complaints';
 import { DataPage } from './pages/DataPage';
 
-const PAGES: PageId[] = ['dashboard', 'explorer', 'segments', 'makers', 'bodyfuel', 'launches', 'data'];
+const PAGES: PageId[] = ['dashboard', 'explorer', 'segments', 'makers', 'bodyfuel', 'launches', 'complaints', 'data'];
 
 function pageFromHash(): PageId {
   const h = window.location.hash.replace('#/', '').replace('#', '') as PageId;
@@ -45,6 +46,11 @@ export default function App() {
         isSampleData: ds?.meta.isSampleData ?? true,
         verifiedModelCount: ds?.meta.verifiedModelCount ?? 0,
         totalModelCount: ds?.meta.totalModelCount ?? 0,
+        activeModelCount: ds?.models.filter((m) => m.status === 'active').length ?? 0,
+        sampleActiveCount:
+          ds?.models.filter((m) => m.status === 'active' && m.sourceUrl === 'sample').length ?? 0,
+        lastUpdated: ds?.meta.lastUpdated ?? '',
+        derivedUpdatedAt: ds?.meta.derivedUpdatedAt ?? '',
       }}
     >
       {error && (
@@ -61,6 +67,7 @@ export default function App() {
           {page === 'makers' && <Makers ds={ds} />}
           {page === 'bodyfuel' && <BodyFuel ds={ds} />}
           {page === 'launches' && <Launches ds={ds} />}
+          {page === 'complaints' && <Complaints />}
           {page === 'data' && <DataPage ds={ds} />}
         </>
       )}

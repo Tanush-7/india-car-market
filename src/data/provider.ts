@@ -12,6 +12,9 @@ import type {
   PriceRecord,
   Variant,
 } from './types';
+import { COMPLAINTS_UPDATED_AT } from './complaints';
+import { MAINTENANCE_UPDATED_AT } from './maintenance';
+import { ONROAD_UPDATED_AT } from './onRoad';
 import {
   SAMPLE_NOTE,
   SAMPLE_VERIFIED_AT,
@@ -47,8 +50,13 @@ export interface MarketDataset {
     totalModelCount?: number;
     note: string;
     lastUpdated: string;
+    /** Newest refresh date of the derived tables (on-road, maintenance, complaints). */
+    derivedUpdatedAt: string;
   };
 }
+
+/** Newest refresh date across the derived data tables. */
+export const DERIVED_UPDATED_AT = [ONROAD_UPDATED_AT, MAINTENANCE_UPDATED_AT, COMPLAINTS_UPDATED_AT].sort().at(-1) as string;
 
 export function sampleDataset(): MarketDataset {
   return {
@@ -61,6 +69,7 @@ export function sampleDataset(): MarketDataset {
       isSampleData: true,
       note: SAMPLE_NOTE,
       lastUpdated: SAMPLE_VERIFIED_AT,
+      derivedUpdatedAt: DERIVED_UPDATED_AT,
     },
   };
 }
@@ -116,6 +125,7 @@ function mergedDataset(): MarketDataset {
       totalModelCount: models.length,
       note: VERIFIED_NOTE,
       lastUpdated: VERIFIED_AT,
+      derivedUpdatedAt: DERIVED_UPDATED_AT,
     },
   };
 }
@@ -159,6 +169,7 @@ async function supabaseDataset(base: string, apiKey: string): Promise<MarketData
       isSampleData: false,
       note: 'Live data from Supabase.',
       lastUpdated: new Date().toISOString().slice(0, 10),
+      derivedUpdatedAt: DERIVED_UPDATED_AT,
     },
   };
 }
