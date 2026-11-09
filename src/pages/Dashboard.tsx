@@ -21,6 +21,7 @@ import {
   maintenanceForModel,
   maintenanceMidpoint,
 } from '../data/maintenance';
+import { recentPriceChanges } from '../lib/priceChanges';
 import { Card, PageHeader, StatCard } from '../components/ui';
 
 const PIE_COLORS = ['#0f766e', '#1d4ed8', '#b45309', '#be123c', '#6d28d9', '#0e7490', '#4d7c0f', '#9a3412'];
@@ -89,6 +90,8 @@ export function Dashboard(props: { ds: MarketDataset }) {
       }))
       .sort((a, b) => a.avg - b.avg);
   }, [rows]);
+
+  const recentChanges = useMemo(() => recentPriceChanges(props.ds, 5), [props.ds]);
 
   const bandFor = (price: number | null) =>
     price === null ? '—' : bands[bandForPrice(price)].label;
@@ -211,6 +214,36 @@ export function Dashboard(props: { ds: MarketDataset }) {
             , updated {fmtDate(MAINTENANCE_UPDATED_AT)}. A maker's figure is the mean of its
             models' segment midpoints, so a maker with more large SUVs reads higher. Per-model
             ranges are in the Model Explorer.
+          </p>
+        </Card>
+        <Card
+          title="Recent price changes"
+          sub="Latest recorded ex-showroom changes across models"
+        >
+          <ul className="space-y-2 text-sm">
+            {recentChanges.map((c) => (
+              <li key={c.id} className="flex flex-wrap items-baseline justify-between gap-2 border-b border-slate-100 pb-2">
+                <span className="text-slate-900">
+                  {c.makerName} {c.modelName} - {c.variantName}
+                  <span className="block text-xs text-slate-500">{fmtDate(c.date)}</span>
+                </span>
+                <span className="text-slate-600">
+                  {inr(c.oldPrice)} to {inr(c.newPrice)}{' '}
+                  <span className={c.delta < 0 ? 'font-medium text-green-700' : 'font-medium text-amber-700'}>
+                    ({c.delta > 0 ? '+' : ''}
+                    {inr(c.delta)}, {c.pct > 0 ? '+' : ''}
+                    {c.pct.toFixed(1)}%)
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-xs text-slate-500">
+            <a className="underline" href="#/price-changes">
+              See all 60 most recent changes
+            </a>
+            . This is the alert feed a static site can offer - true push or email alerts
+            need a backend, which this site does not have.
           </p>
         </Card>
       </div>

@@ -9,6 +9,8 @@ export type PageId =
   | 'bodyfuel'
   | 'launches'
   | 'complaints'
+  | 'safety'
+  | 'price-changes'
   | 'data';
 
 export const NAV: { id: PageId; label: string }[] = [
@@ -19,6 +21,8 @@ export const NAV: { id: PageId; label: string }[] = [
   { id: 'bodyfuel', label: 'Body & Fuel' },
   { id: 'launches', label: 'Launches' },
   { id: 'complaints', label: 'Complaints & Recalls' },
+  { id: 'safety', label: 'Safety' },
+  { id: 'price-changes', label: 'Price Changes' },
   { id: 'data', label: 'Data & Setup' },
 ];
 
@@ -90,7 +94,7 @@ export function Shell(props: {
         <div className="mx-auto max-w-7xl px-4 py-4 text-xs text-slate-500">
           CarScope India - open car-price comparison for the Indian market. All segment math
           uses ex-showroom prices. Price data last updated {fmtDate(dataStatus.lastUpdated)};
-          on-road, maintenance and recall figures last updated {fmtDate(dataStatus.derivedUpdatedAt)}.
+          on-road, maintenance, safety, fuel and recall figures last updated {fmtDate(dataStatus.derivedUpdatedAt)}.
           Update the data without touching the frontend: swap the dataset via Supabase (see Data & Setup).
         </div>
       </footer>

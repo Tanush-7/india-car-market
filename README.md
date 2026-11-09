@@ -89,17 +89,19 @@ To go live:
 ## Weekly refresh (every Monday)
 
 The site shows two visible dates: the price-data date (banner, footer, Data &
-Setup) and the derived-figures date (on-road, maintenance, recalls). Both come
-from data files, never from components, so a refresh is a data edit + push.
+Setup) and the derived-figures date (on-road, maintenance, recalls, safety,
+fuel). Both come from data files, never from components, so a refresh is a
+data edit + push.
 
 1. **Prices** - check official manufacturer price lists and the portal sources
    listed in `data-collection/VALIDATION.md` for changes since the last refresh.
    Update `src/data/verifiedData.ts` (and `src/data/verifiedHistory.ts` for price
    changes) and set `VERIFIED_AT` to the refresh date. Do not re-date prices you
    did not actually check.
-2. **Bengaluru on-road** - re-check the Karnataka slabs in
-   `src/data/onRoad.ts` (Spinny, mycarhelpline) and update `ONROAD_UPDATED_AT`.
-   Change the slab table if the state revises rates; the components compute from it.
+2. **On-road (7 cities)** - re-check the road-tax slabs for Bengaluru, Delhi,
+   Mumbai, Pune, Chennai, Hyderabad and Kolkata in `src/data/onRoad.ts`
+   (Spinny, mycarhelpline, state guides) and update `ONROAD_UPDATED_AT`.
+   Change the slab tables if a state revises rates; the components compute from them.
 3. **Maintenance** - re-check the segment averages in
    `src/data/maintenance.ts` (motomotar 2026 guide) and update
    `MAINTENANCE_UPDATED_AT`. Only change a segment range when the source updates it.
@@ -108,8 +110,15 @@ from data files, never from components, so a refresh is a data edit + push.
    `COMPLAINTS_UPDATED_AT`. If a per-model complaint dataset ever becomes public,
    add it as a new table in this file with its source and date; do not use
    aggregator counts (self-selected, unverified).
-5. **Verify** - run `npm test` and `npm run build` locally; fix any failures.
-6. **Ship** - commit and push to `main`. `.github/workflows/deploy.yml` runs
+5. **Safety** - check the Bharat NCAP and Global NCAP result pages for newly
+   tested models and add rows to `src/data/safety.ts`; update
+   `SAFETY_UPDATED_AT`. Never add a rating that was not published for that model.
+6. **Fuel prices** - update the metro petrol / diesel / CNG prices in
+   `src/data/fuel.ts` (Goodreturns / oil-company daily rates) and update
+   `FUEL_PRICES_UPDATED_AT`. Verify the CNG price for any city currently flagged
+   approximate before marking it verified.
+7. **Verify** - run `npm test` and `npm run build` locally; fix any failures.
+8. **Ship** - commit and push to `main`. `.github/workflows/deploy.yml` runs
    tests, builds and deploys to GitHub Pages. Check the live site afterwards:
    `https://tanush.tech/india-car-market/` and
    `https://tanush-7.github.io/india-car-market/`.

@@ -5,6 +5,8 @@ import { fmtDate } from '../lib/format';
 import { COMPLAINTS_UPDATED_AT } from '../data/complaints';
 import { MAINTENANCE_UPDATED_AT } from '../data/maintenance';
 import { ONROAD_UPDATED_AT } from '../data/onRoad';
+import { SAFETY_UPDATED_AT } from '../data/safety';
+import { FUEL_PRICES_UPDATED_AT } from '../data/fuel';
 import { Badge, Card, PageHeader } from '../components/ui';
 
 export function DataPage(props: { ds: MarketDataset }) {
@@ -119,7 +121,8 @@ export function DataPage(props: { ds: MarketDataset }) {
         <p className="mt-3 text-xs text-slate-500">
           Price data last updated: {fmtDate(props.ds.meta.lastUpdated)}. On-road figures last
           updated {fmtDate(ONROAD_UPDATED_AT)}, maintenance estimates {fmtDate(MAINTENANCE_UPDATED_AT)},
-          recall figures {fmtDate(COMPLAINTS_UPDATED_AT)}. To replace the sample data with
+          recall figures {fmtDate(COMPLAINTS_UPDATED_AT)}, safety ratings {fmtDate(SAFETY_UPDATED_AT)},
+          fuel prices {fmtDate(FUEL_PRICES_UPDATED_AT)}. To replace the sample data with
           verified records, follow the Supabase setup below. No frontend changes are needed.
         </p>
       </Card>
@@ -196,9 +199,10 @@ export function DataPage(props: { ds: MarketDataset }) {
             refresh date. The banner, footer and this page read that date automatically.
           </li>
           <li>
-            On-road: re-check the Karnataka slabs in{' '}
+            On-road: re-check the road-tax slabs for all seven cities in{' '}
             <code className="rounded bg-slate-100 px-1">src/data/onRoad.ts</code> (Spinny /
-            mycarhelpline) and update <code className="rounded bg-slate-100 px-1">ONROAD_UPDATED_AT</code>.
+            mycarhelpline / state guides) and update{' '}
+            <code className="rounded bg-slate-100 px-1">ONROAD_UPDATED_AT</code>.
           </li>
           <li>
             Maintenance: re-check the segment averages in{' '}
@@ -209,6 +213,21 @@ export function DataPage(props: { ds: MarketDataset }) {
             Recalls: re-check the SIAM portal summary in{' '}
             <code className="rounded bg-slate-100 px-1">src/data/complaints.ts</code> (Moneycontrol /
             Factly) and update <code className="rounded bg-slate-100 px-1">COMPLAINTS_UPDATED_AT</code>.
+          </li>
+          <li>
+            Safety: check the Bharat NCAP and Global NCAP result pages for newly tested
+            models and add rows to{' '}
+            <code className="rounded bg-slate-100 px-1">src/data/safety.ts</code>; update{' '}
+            <code className="rounded bg-slate-100 px-1">SAFETY_UPDATED_AT</code>. Never add a
+            rating that was not published for that model.
+          </li>
+          <li>
+            Fuel prices: update the metro petrol / diesel / CNG prices in{' '}
+            <code className="rounded bg-slate-100 px-1">src/data/fuel.ts</code> (Goodreturns /
+            oil-company daily rates) and update{' '}
+            <code className="rounded bg-slate-100 px-1">FUEL_PRICES_UPDATED_AT</code>. Verify
+            the CNG price for any city currently flagged approximate before marking it
+            verified.
           </li>
           <li>
             Run <code className="rounded bg-slate-100 px-1">npm test</code> and{' '}

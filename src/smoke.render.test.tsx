@@ -20,9 +20,11 @@ const { BodyFuel } = await import('./pages/BodyFuel');
 const { Launches } = await import('./pages/Launches');
 const { DataPage } = await import('./pages/DataPage');
 const { Complaints } = await import('./pages/Complaints');
+const { Safety } = await import('./pages/Safety');
+const { PriceChanges } = await import('./pages/PriceChanges');
 
 describe('page renders', () => {
-  it('renders all eight pages against the merged dataset', async () => {
+  it('renders all ten pages against the merged dataset', async () => {
     const ds = await provider.loadDataset();
     expect(ds.meta.isSampleData).toBe(false);
     expect(ds.meta.verifiedModelCount).toBe(75);
@@ -35,6 +37,8 @@ describe('page renders', () => {
       ['bodyfuel', renderToString(<BodyFuel ds={ds} />)],
       ['launches', renderToString(<Launches ds={ds} />)],
       ['complaints', renderToString(<Complaints />)],
+      ['safety', renderToString(<Safety ds={ds} />)],
+      ['price-changes', renderToString(<PriceChanges ds={ds} />)],
       ['data', renderToString(<DataPage ds={ds} />)],
     ];
     for (const [name, html] of pages) {
@@ -48,5 +52,8 @@ describe('page renders', () => {
     expect(pages[1][1]).toContain('Model Explorer');
     expect(pages[5][1]).toContain('Launch History');
     expect(pages[6][1]).toContain('Complaints &amp; Recalls');
+    expect(pages[7][1]).toContain('Safety Ratings');
+    expect(pages[7][1]).toContain('Not tested');
+    expect(pages[8][1]).toContain('Price Changes');
   });
 });

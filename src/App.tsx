@@ -8,9 +8,11 @@ import { Makers } from './pages/Makers';
 import { BodyFuel } from './pages/BodyFuel';
 import { Launches } from './pages/Launches';
 import { Complaints } from './pages/Complaints';
+import { Safety } from './pages/Safety';
+import { PriceChanges } from './pages/PriceChanges';
 import { DataPage } from './pages/DataPage';
 
-const PAGES: PageId[] = ['dashboard', 'explorer', 'segments', 'makers', 'bodyfuel', 'launches', 'complaints', 'data'];
+const PAGES: PageId[] = ['dashboard', 'explorer', 'segments', 'makers', 'bodyfuel', 'launches', 'complaints', 'safety', 'price-changes', 'data'];
 
 function pageFromHash(): PageId {
   const h = window.location.hash.replace('#/', '').replace('#', '') as PageId;
@@ -68,6 +70,8 @@ export default function App() {
           {page === 'bodyfuel' && <BodyFuel ds={ds} />}
           {page === 'launches' && <Launches ds={ds} />}
           {page === 'complaints' && <Complaints />}
+          {page === 'safety' && <Safety ds={ds} />}
+          {page === 'price-changes' && <PriceChanges ds={ds} />}
           {page === 'data' && <DataPage ds={ds} />}
         </>
       )}

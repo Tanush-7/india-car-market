@@ -15,6 +15,8 @@ import type {
 import { COMPLAINTS_UPDATED_AT } from './complaints';
 import { MAINTENANCE_UPDATED_AT } from './maintenance';
 import { ONROAD_UPDATED_AT } from './onRoad';
+import { SAFETY_UPDATED_AT } from './safety';
+import { FUEL_PRICES_UPDATED_AT } from './fuel';
 import {
   SAMPLE_NOTE,
   SAMPLE_VERIFIED_AT,
@@ -56,7 +58,15 @@ export interface MarketDataset {
 }
 
 /** Newest refresh date across the derived data tables. */
-export const DERIVED_UPDATED_AT = [ONROAD_UPDATED_AT, MAINTENANCE_UPDATED_AT, COMPLAINTS_UPDATED_AT].sort().at(-1) as string;
+export const DERIVED_UPDATED_AT = [
+  ONROAD_UPDATED_AT,
+  MAINTENANCE_UPDATED_AT,
+  COMPLAINTS_UPDATED_AT,
+  SAFETY_UPDATED_AT,
+  FUEL_PRICES_UPDATED_AT,
+]
+  .sort()
+  .at(-1) as string;
 
 export function sampleDataset(): MarketDataset {
   return {
